@@ -1,7 +1,7 @@
 import json, sys, os
 
 inp = sys.argv[1] if len(sys.argv)>1 else "receipts.json"
-out = sys.argv[sys.argv.index("--output")+1] if "--output" in sys.argv else "lean/Proofs/Selmer_389a1_2.lean"
+out = sys.argv[sys.argv.index("--output")+1] if "--output" in sys.argv else "lean/CertifiedSelmer/Proofs/Selmer_389a1_2.lean"
 
 with open(inp, 'r', encoding='utf-8') as fh:
     d = json.load(fh)
