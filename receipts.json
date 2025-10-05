@@ -1,1 +1,1 @@
-{"curve":"389a1","prime":2,"merkle_root":"4f3a9c2b7c3f1a8e9d4e2f7b2b8f9c4a5f1a3e9d3c7f9d2e8f4a1c9e","reg_interval":[0.15246017794314375,0.15246017794314376],"smith_diagonal":[1,1],"analytic_rank":2,"lead_coeff_interval":[0.7593165002884267,0.7593165002884268]}
+{"curve":"389a1","prime":2,"merkle_root":"ff48d502b0c36eb786db64cde9293be077759070976bfcf83988d2b6e0f191fe","reg_interval":[0.15246017794314362,0.15246017794314376],"smith_diagonal":[1,1],"analytic_rank":2,"lead_coeff_interval":[0.7593165002884267,0.7593165002884268]}
