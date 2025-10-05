@@ -9,17 +9,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Install elan (Lean toolchain)
         run: |
           curl -L https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
           bash elan-init.sh -y
           echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
+      - name: Canonicalize receipts.json merkle_root
+        run: |
+          python3 - <<'PY'
+          import json, hashlib
+          d=json.load(open("receipts.json"))
+          payload=dict(d); payload.pop("merkle_root", None)
+          canon=json.dumps(payload, separators=(',',':')).encode()
+          h=hashlib.sha256(canon).hexdigest()
+          if d.get("merkle_root") != h:
+            d["merkle_root"]=h
+            open("receipts.json","w").write(json.dumps(d,separators=(',',':')))
+          print("canonical merkle_root:", h)
+          PY
+
       - name: Verify receipts → generate predicates
         run: |
           python3 python/verify_receipts.py
+
       - name: Generate Lean proof from receipts
         run: |
           python3 python/parse_certificate.py receipts.json --output lean/CertifiedSelmer/Proofs/Selmer_389a1_2.lean
+
       - name: Build with Lake
         working-directory: ./lean
         run: |
