@@ -3,7 +3,7 @@ namespace CertifiedSelmer
 
 def curve : String := "389a1"
 def prime : Nat := 2
-def regLo : Float := 0.15246017794314376
+def regLo : Float := 0.15246017794314362
 def regHi : Float := 0.15246017794314376
 def smithDiag : List Nat := [1,1]
 def analyticRank : Nat := 2
