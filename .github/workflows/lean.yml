@@ -1,0 +1,27 @@
+name: Lean Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan (Lean toolchain)
+        run: |
+          curl -L https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          bash elan-init.sh -y
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+      - name: Verify receipts → generate predicates
+        run: |
+          python3 python/verify_receipts.py
+      - name: Generate Lean proof from receipts
+        run: |
+          python3 python/parse_certificate.py receipts.json --output lean/CertifiedSelmer/Proofs/Selmer_389a1_2.lean
+      - name: Build with Lake
+        working-directory: ./lean
+        run: |
+          lake update
+          lake build
