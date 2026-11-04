@@ -1,0 +1,10 @@
+import CertifiedSelmer
+#print axioms CertifiedSelmer.quotient_trivial_of_exact_and_surjective
+#print axioms CertifiedSelmer.Receipt389.reg_wellFormed
+#print axioms CertifiedSelmer.Receipt389.lead_wellFormed
+#print axioms CertifiedSelmer.Receipt389.assertedSmith_identity
+#print axioms CertifiedSelmer.Model389.point_zero
+#print axioms CertifiedSelmer.Model389.point_one
+#print axioms CertifiedSelmer.Model389.discriminant_eq
+#print axioms CertifiedSelmer.Model389.discriminant_nonzero
+#print axioms CertifiedSelmer.Model389.torsion_polynomial_mod_five

@@ -1,4 +1,4 @@
-# emits receipts.json identical to sample; replace with real runner
-import json
-d=json.load(open("receipts/selmer_389a1_p2.json","r"))
-json.dump(d,open("receipts.json","w"),separators=(",",":"))
+# No certified descent backend exists. Never copy a fixture as a computation.
+raise RuntimeError('Arithmetic certificate generation unavailable: implement exact '
+                   '2-descent witnesses and an independent checker first. '
+                   'Legacy fixtures have not been recomputed.')

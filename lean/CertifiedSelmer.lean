@@ -1,2 +1,3 @@
-import CertifiedSelmer.Proofs.Selmer_389a1_2
 import CertifiedSelmer.Predicates
+import CertifiedSelmer.Proofs.Receipt_389a1_2
+import CertifiedSelmer.Model389

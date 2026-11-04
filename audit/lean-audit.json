@@ -1,0 +1,25 @@
+{
+  "arithmetic_certified": false,
+  "declarations": {
+    "CertifiedSelmer.Model389.discriminant_eq": [],
+    "CertifiedSelmer.Model389.discriminant_nonzero": [],
+    "CertifiedSelmer.Model389.point_one": [],
+    "CertifiedSelmer.Model389.point_zero": [],
+    "CertifiedSelmer.Model389.torsion_polynomial_mod_five": [],
+    "CertifiedSelmer.Receipt389.assertedSmith_identity": [],
+    "CertifiedSelmer.Receipt389.lead_wellFormed": [],
+    "CertifiedSelmer.Receipt389.reg_wellFormed": [],
+    "CertifiedSelmer.quotient_trivial_of_exact_and_surjective": []
+  },
+  "lean_version": "Lean (version 4.20.0, x86_64-unknown-linux-gnu, commit 77cfc4d1a4f6, Release)",
+  "receipt_raw_sha256": "0b04fdd7d3485217aa1ca2e26f8eb41ad5140edecbfbb69dabbfd8f81d4270d0",
+  "source_sha256": {
+    "lean/Audit.lean": "58dc1f662c7344ef86b813438fabeb55dab8fee5aa5c9f7f27dadb93414068f5",
+    "lean/CertifiedSelmer.lean": "d277492ba2facb02e8017382bac9c5039ae40072e3f88906ff8ddb351baa5646",
+    "lean/CertifiedSelmer/Model389.lean": "b71da01f4b29ad3957d086ae13a3ea0bea2cce4de5810a04d892895fbf0bb1ce",
+    "lean/CertifiedSelmer/Predicates.lean": "f02a847d856d379e27b660711b58513e94e07cebb6a4319d72307fc94ba48fae",
+    "lean/CertifiedSelmer/Proofs/Receipt_389a1_2.lean": "d44060743afcd7c0c4b5d9831faeaf6eddf0bdc729b1ac4c49ef489171c1386b",
+    "lean/lakefile.lean": "9a0863a369a9db08d9bddc4e8fb82a7c87f5b19543cc9fbd535b17093088d679"
+  },
+  "status": "kernel_replay_passed"
+}

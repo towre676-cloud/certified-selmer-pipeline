@@ -1,45 +1,33 @@
-name: Lean Build
-
+name: Receipt facts and trust-boundary tests (not Selmer certification)
 on:
   push:
   pull_request:
-
+permissions:
+  contents: read
 jobs:
-  build:
+  receipt-facts:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install elan (Lean toolchain)
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: lean
+          auto-config: 'false'
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+      - name: Test rejection of unsupported arithmetic and malformed evidence
+        run: python3 -m unittest discover -s tests -v
+      - name: Verify existing digest without rewriting receipts
+        run: python3 python/verify_receipts.py
+      - name: Reproduce explicitly limited receipt facts
         run: |
-          curl -L https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
-          bash elan-init.sh -y
-          echo "$HOME/.elan/bin" >> $GITHUB_PATH
-
-      - name: Canonicalize receipts.json merkle_root
-        run: |
-          python3 - <<'PY'
-          import json, hashlib
-          d=json.load(open("receipts.json"))
-          payload=dict(d); payload.pop("merkle_root", None)
-          canon=json.dumps(payload, separators=(',',':')).encode()
-          h=hashlib.sha256(canon).hexdigest()
-          if d.get("merkle_root") != h:
-            d["merkle_root"]=h
-            open("receipts.json","w").write(json.dumps(d,separators=(',',':')))
-          print("canonical merkle_root:", h)
-          PY
-
-      - name: Verify receipts → generate predicates
-        run: |
-          python3 python/verify_receipts.py
-
-      - name: Generate Lean proof from receipts
-        run: |
-          python3 python/parse_certificate.py receipts.json --output lean/CertifiedSelmer/Proofs/Selmer_389a1_2.lean
-
-      - name: Build with Lake
-        working-directory: ./lean
-        run: |
-          lake update
-          lake build
+          python3 python/parse_certificate.py --scope receipt
+          git diff --exit-code -- receipts.json receipts/ lean/CertifiedSelmer/Proofs/
+      - name: Kernel replay and transitive axiom audit
+        run: python3 python/audit_lean.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: receipt-facts-audit-NOT-Selmer-certification
+          path: audit/
