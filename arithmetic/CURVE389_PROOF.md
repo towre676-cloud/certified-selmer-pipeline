@@ -256,3 +256,16 @@ The follow-up source and proof are prepared for review. No additional GitHub com
 - [PARI elliptic-curve documentation](https://pari.math.u-bordeaux.fr/dochtml/html-stable/Elliptic_curves.html) defines unconditional rank bounds, the cover-basis output and the distinction from numerical BSD evidence; [modular-symbol documentation](https://pari.math.u-bordeaux.fr/dochtml/html-stable/Modular_symbols.html) specifies the exact rational-symbol construction.
 - [Arb integration documentation](https://python-flint.readthedocs.io/en/latest/acb.html) specifies validated quadrature and the required analytic flag for branch functions; [Arb real arithmetic](https://python-flint.readthedocs.io/en/latest/arb.html) specifies outward enclosures.
 - The rank-zero implication used for the exact analytic vanishing is the standard completed Kolyvagin theorem for modular elliptic curves; its original development includes [Kolyvagin's finiteness paper](https://www.mathnet.ru/eng/im1191). We do not apply its rank-at-most-one Sha finiteness conclusion to this rank-two curve.
+
+
+## Integrated finite-witness update
+
+The follow-up [full-descent certificate](../docs/FULL_2_DESCENT_389.md) adds a
+standard-library checker and explicit unit and local squareclass witnesses.
+The current integrated replay now covers **42 audited Lean statements**, all
+with empty transitive axiom lists, and **35 passing Python tests**. The earlier
+19-statement/23-test counts above describe the historical first arithmetic
+follow-up. The new 23 facts are in `CertifiedSelmer.FullDescent389`, including
+the exhaustive modulo-eight obstruction and rational cover/class witnesses.
+The conventional arithmetic identifications and analytic arguments still lie
+outside Lean; this update does not change that formal boundary.

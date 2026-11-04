@@ -2,3 +2,4 @@ import CertifiedSelmer.Predicates
 import CertifiedSelmer.Proofs.Receipt_389a1_2
 import CertifiedSelmer.Model389
 import CertifiedSelmer.Arithmetic389
+import CertifiedSelmer.FullDescent389

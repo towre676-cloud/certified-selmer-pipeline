@@ -1,4 +1,4 @@
-name: Receipt facts and trust-boundary tests (not Selmer certification)
+name: Receipt and finite arithmetic witnesses (not full formal Selmer certification)
 on:
   push:
   pull_request:
@@ -29,6 +29,8 @@ jobs:
         run: |
           python3 python/parse_certificate.py --scope receipt
           git diff --exit-code -- receipts.json receipts/ lean/CertifiedSelmer/Proofs/
+      - name: Replay portable exact full-descent witnesses
+        run: python3 arithmetic/full_descent_389.py --output audit/full-descent-finite-checks.json
       - name: Kernel replay and transitive axiom audit
         run: python3 python/audit_lean.py
       - uses: actions/upload-artifact@v4

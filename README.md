@@ -37,3 +37,26 @@ python3 -m pip install -r arithmetic/requirements.txt
 python3 arithmetic/verify_389.py
 python3 arithmetic/pari_replay.py
 ```
+
+
+## Portable full-descent witnesses and integrated Lean replay
+
+[The focused full-descent proof](docs/FULL_2_DESCENT_389.md) now has a
+standard-library certificate checker with explicit unit normalizations, the
+512-case dyadic square obstruction, 389-adic square witnesses and rational
+cover points. It gives a conventional proof of rank two, 2-Selmer dimension
+two and 2-primary Sha vanishing.
+
+```bash
+python3 arithmetic/full_descent_389.py
+python3 -m unittest discover -s tests -v
+python3 python/audit_lean.py
+```
+
+The `CertifiedSelmer.FullDescent389` module is now part of the default build.
+Fresh Lean 4.20.0 replay covers 42 audited declarations with empty transitive
+axiom lists, including 23 new finite descent facts; all 35 Python tests pass.
+The actual number-field, local-field and cohomological bridges remain in the
+written proof, outside this Lean replay. The generic arithmetic certificate
+generator stays fail-closed. Existing analytic and saturation work is preserved
+and tested separately. No full Sha triviality or full BSD theorem is claimed.
