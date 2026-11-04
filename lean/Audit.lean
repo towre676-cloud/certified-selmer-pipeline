@@ -8,3 +8,13 @@ import CertifiedSelmer
 #print axioms CertifiedSelmer.Model389.discriminant_eq
 #print axioms CertifiedSelmer.Model389.discriminant_nonzero
 #print axioms CertifiedSelmer.Model389.torsion_polynomial_mod_five
+#print axioms CertifiedSelmer.Arithmetic389.norm_witness_two
+#print axioms CertifiedSelmer.Arithmetic389.norm_witness_three
+#print axioms CertifiedSelmer.Arithmetic389.cubic_discriminant
+#print axioms CertifiedSelmer.Arithmetic389.minkowski_comparison
+#print axioms CertifiedSelmer.Arithmetic389.no_root_mod_five
+#print axioms CertifiedSelmer.Arithmetic389.no_root_mod_seven
+#print axioms CertifiedSelmer.Arithmetic389.two_nonsquare_mod_three
+#print axioms CertifiedSelmer.Arithmetic389.count_mod_five
+#print axioms CertifiedSelmer.Arithmetic389.count_mod_seven
+#print axioms CertifiedSelmer.Arithmetic389.reduction_counts_bezout

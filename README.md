@@ -1,6 +1,6 @@
 # certified-selmer-pipeline
 
-**Current status: receipt consistency and limited formal facts, not certified Selmer vanishing.**
+**Current status: a curve-specific arithmetic proof and rigorous numerical replay; end-to-end Lean Selmer certification remains open.**
 
 The historical 389a1 receipts contain unverified arithmetic assertions. The old Sage runner copied a fixture, and the old Lean generator proved only `True`. The corrected interface refuses arithmetic certification until actual descent witnesses and arithmetic proofs are supplied.
 
@@ -25,3 +25,15 @@ sage sage/selmer_ci_runner.sage
 ```
 
 Explicit receipt scope emits kernel-checkable literal inequalities, never a Selmer theorem. A successful CI run means only those limited facts and the rejection tests passed.
+
+## Curve-specific arithmetic follow-up
+
+[The new arithmetic proof](arithmetic/CURVE389_PROOF.md) establishes rank two, a full Mordell–Weil basis, 2-Selmer dimension two and 2-primary Sha vanishing using standard mathematical theorems with independently checked curve-specific calculations. It supplies rigorous regulator, period and L-leading-coefficient enclosures. A separate fresh PARI full descent agrees.
+
+This is a mathematical proof with executable arithmetic checks, not a complete Lean formalization. There are now 19 limited kernel-replayed statements. Full Sha triviality remains unproved, and the generic arithmetic proof generator continues to fail closed.
+
+```bash
+python3 -m pip install -r arithmetic/requirements.txt
+python3 arithmetic/verify_389.py
+python3 arithmetic/pari_replay.py
+```

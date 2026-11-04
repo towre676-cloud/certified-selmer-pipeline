@@ -16,6 +16,11 @@ jobs:
           build: 'false'
           test: 'false'
           lint: 'false'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned arithmetic checker dependencies
+        run: python3 -m pip install -r arithmetic/requirements.txt
       - name: Test rejection of unsupported arithmetic and malformed evidence
         run: python3 -m unittest discover -s tests -v
       - name: Verify existing digest without rewriting receipts

@@ -7,3 +7,13 @@
 'CertifiedSelmer.Model389.discriminant_eq' does not depend on any axioms
 'CertifiedSelmer.Model389.discriminant_nonzero' does not depend on any axioms
 'CertifiedSelmer.Model389.torsion_polynomial_mod_five' does not depend on any axioms
+'CertifiedSelmer.Arithmetic389.norm_witness_two' does not depend on any axioms
+'CertifiedSelmer.Arithmetic389.norm_witness_three' does not depend on any axioms
+'CertifiedSelmer.Arithmetic389.cubic_discriminant' does not depend on any axioms
+'CertifiedSelmer.Arithmetic389.minkowski_comparison' does not depend on any axioms
+'CertifiedSelmer.Arithmetic389.no_root_mod_five' does not depend on any axioms
+'CertifiedSelmer.Arithmetic389.no_root_mod_seven' does not depend on any axioms
+'CertifiedSelmer.Arithmetic389.two_nonsquare_mod_three' does not depend on any axioms
+'CertifiedSelmer.Arithmetic389.count_mod_five' does not depend on any axioms
+'CertifiedSelmer.Arithmetic389.count_mod_seven' does not depend on any axioms
+'CertifiedSelmer.Arithmetic389.reduction_counts_bezout' does not depend on any axioms

@@ -1,6 +1,16 @@
 {
   "arithmetic_certified": false,
   "declarations": {
+    "CertifiedSelmer.Arithmetic389.count_mod_five": [],
+    "CertifiedSelmer.Arithmetic389.count_mod_seven": [],
+    "CertifiedSelmer.Arithmetic389.cubic_discriminant": [],
+    "CertifiedSelmer.Arithmetic389.minkowski_comparison": [],
+    "CertifiedSelmer.Arithmetic389.no_root_mod_five": [],
+    "CertifiedSelmer.Arithmetic389.no_root_mod_seven": [],
+    "CertifiedSelmer.Arithmetic389.norm_witness_three": [],
+    "CertifiedSelmer.Arithmetic389.norm_witness_two": [],
+    "CertifiedSelmer.Arithmetic389.reduction_counts_bezout": [],
+    "CertifiedSelmer.Arithmetic389.two_nonsquare_mod_three": [],
     "CertifiedSelmer.Model389.discriminant_eq": [],
     "CertifiedSelmer.Model389.discriminant_nonzero": [],
     "CertifiedSelmer.Model389.point_one": [],
@@ -14,8 +24,9 @@
   "lean_version": "Lean (version 4.20.0, x86_64-unknown-linux-gnu, commit 77cfc4d1a4f6, Release)",
   "receipt_raw_sha256": "0b04fdd7d3485217aa1ca2e26f8eb41ad5140edecbfbb69dabbfd8f81d4270d0",
   "source_sha256": {
-    "lean/Audit.lean": "58dc1f662c7344ef86b813438fabeb55dab8fee5aa5c9f7f27dadb93414068f5",
-    "lean/CertifiedSelmer.lean": "d277492ba2facb02e8017382bac9c5039ae40072e3f88906ff8ddb351baa5646",
+    "lean/Audit.lean": "a75dc85f0ebdcd89204a22b4c01ff0a1a4adc9bb0c8ca39e9006820a0824e75d",
+    "lean/CertifiedSelmer.lean": "c9b7ff0e42a4227bce260987f4a26e57325b6a66ff84b38cc622b73f3632a6ed",
+    "lean/CertifiedSelmer/Arithmetic389.lean": "530df03004c675ab9663e52b4b578298a42425d6848e1e38def9b254ffb6780d",
     "lean/CertifiedSelmer/Model389.lean": "b71da01f4b29ad3957d086ae13a3ea0bea2cce4de5810a04d892895fbf0bb1ce",
     "lean/CertifiedSelmer/Predicates.lean": "f02a847d856d379e27b660711b58513e94e07cebb6a4319d72307fc94ba48fae",
     "lean/CertifiedSelmer/Proofs/Receipt_389a1_2.lean": "d44060743afcd7c0c4b5d9831faeaf6eddf0bdc729b1ac4c49ef489171c1386b",
