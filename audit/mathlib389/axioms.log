@@ -1,0 +1,7 @@
+'CertifiedSelmer.Mathlib389.divisionCubic_monic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.divisionCubic_no_rat_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.affine_not_two_torsion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.discriminant_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.elliptic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.two_torsion_trivial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.two_power_torsion_trivial' depends on axioms: [propext, Classical.choice, Quot.sound]
