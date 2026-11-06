@@ -28,7 +28,7 @@ def main():
     command(['lake','env','lean','-o',str(target),'Curve389.lean'],'build.log')
     axioms=command(['lake','env','lean','Audit.lean'],'axioms.log')
     names=re.findall(r'^#print axioms (\S+)',(ROOT/'Audit.lean').read_text(),re.M)
-    reports=check_axiom_log(axioms,names)
+    reports=check_axiom_log(axioms,names, allowed={'propext','Classical.choice','Quot.sound'})
     sources=['Curve389.lean','Audit.lean','lakefile.toml','lake-manifest.json','lean-toolchain','replay.py']
     record={'status':'kernel_replay_passed','mathlib_revision':revision,
             'lean_version':subprocess.check_output(['lake','env','lean','--version'],cwd=ROOT,text=True).strip(),

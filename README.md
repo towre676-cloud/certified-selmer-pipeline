@@ -56,7 +56,7 @@ python3 python/audit_lean.py
 
 The `CertifiedSelmer.FullDescent389` module is now part of the default build.
 Fresh Lean 4.20.0 replay covers 42 audited declarations with empty transitive
-axiom lists, including 23 new finite descent facts; all 35 Python tests pass.
+axiom lists, including 23 new finite descent facts; the original integrated suite had 35 passing Python tests (39 after the extension and November 6 audit regression).
 The actual number-field, local-field and cohomological bridges remain in the
 written proof, outside this Lean replay. The generic arithmetic certificate
 generator stays fail-closed. Existing analytic and saturation work is preserved
@@ -67,3 +67,5 @@ and tested separately. No full Sha triviality or full BSD theorem is claimed.
 [The new progress report](docs/ODD_PRIMARY_AND_FORMAL_PROGRESS.md) records a complete Mathlib proof that the actual rational point group has no nonidentity two-power torsion, plus fresh theorem-backed Sage/PassageMath bounds proving the 5-, 7-, 11- and 13-primary Sha parts trivial. The latter computations are a trusted CAS layer, not Lean proofs or portable independent certificates.
 
 The integrated core library contains 42 axiom-free declarations. The optional [Mathlib project](formal_mathlib/README.md) adds seven actual-curve declarations, audited against the three standard Lean axioms. End-to-end formal rank/Selmer/Sha proofs remain open. The pinned odd-primary backend rejects p=3; full Sha finiteness and triviality are not established.
+
+See [the November 6 integration review](docs/INTEGRATION_REVIEW_2026-11-06.md) for ancestry, fresh replay, corrections and remaining verification boundaries.

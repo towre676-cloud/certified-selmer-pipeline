@@ -1,6 +1,6 @@
 # 389a1: actual-curve formalization and four odd-primary Sha bounds
 
-November 4, 2026. Baseline: PR #1 head `1be3c5939ed942d82377daa697227e8452eb5747`, preserving the concurrent full-descent witness integration. Both GitHub runs for its preceding commit `7ca095e` succeeded. The changes described here are a new local proposal; they have not been committed, merged or run in GitHub Actions.
+Updated November 6, 2026. Original baseline: PR #1 head `1be3c5939ed942d82377daa697227e8452eb5747`, preserving the full-descent witness integration. Extension head `847a120b198002f7b3b0da31aba892d49c53d40a` passed hosted core, Mathlib and odd-primary CAS verification (PR runs 42137509392 and 42137509356; push runs 42137502987 and 42137502960). Integration must preserve the PR #1 repair and retarget this extension to main after that repair is merged. These runs establish the stated replay scope, not an end-to-end formal Selmer theorem.
 
 ## Result and evidence boundary
 
@@ -102,9 +102,9 @@ python3 -m pip install -r arithmetic/requirements-odd-primary.txt
 python3 arithmetic/odd_primary_replay.py
 ```
 
-For the Mathlib component, follow `formal_mathlib/README.md`. It pins both compiler and Mathlib, emits a compiled proof module and audits every declared transitive axiom list. The proposed additional workflow has separate jobs for this formal replay and for the theorem-backed CAS computation. Those workflows have not yet run remotely for these new changes.
+For the Mathlib component, follow `formal_mathlib/README.md`. It pins both compiler and Mathlib, emits a compiled proof module and audits every declared transitive axiom list. The proposed additional workflow has separate jobs for this formal replay and for the theorem-backed CAS computation. Both workflows passed remotely for extension head `847a120b198002f7b3b0da31aba892d49c53d40a`. The earlier extension head failed dependency-cache resolution; the module-name cache request fixed that infrastructure failure without changing the mathematical sources. Changed integration heads require their own fresh checks.
 
-Proposed consequential operation after review: add this prepared follow-up to the existing PR branch and update the PR description. No merge or release is proposed.
+Integration order: merge the trust-chain repair with a merge commit, retarget the extension to main, incorporate the stricter core axiom-audit interface, and verify the resulting merge candidate before marking ready and merging. Preserve the existing declaration and CAS receipts as historical evidence tied to their source hashes; fresh CI artifacts cover changed heads. Release publication is a separate operation.
 
 ## Primary sources
 
