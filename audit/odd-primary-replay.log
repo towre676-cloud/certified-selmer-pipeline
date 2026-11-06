@@ -1,0 +1,5 @@
+p=5: proved upper bound 1; precision replay 1 + O(5^2)
+p=7: proved upper bound 1; precision replay 1 + O(7^2)
+p=11: proved upper bound 1; precision replay 1 + O(11^2)
+p=13: proved upper bound 1; precision replay 1 + O(13^2)
+Four prime-primary bounds replayed; full Sha and complete formalization remain open

@@ -1,0 +1,126 @@
+{
+  "status": "theorem_backed_CAS_replay_passed",
+  "curve_ainvs": [
+    0,
+    1,
+    1,
+    -2,
+    0
+  ],
+  "rank": 2,
+  "rank_algorithm": "pari, proof=True, use_database=False",
+  "generators_found": [
+    "(0 : -1 : 1)",
+    "(4 : 8 : 1)"
+  ],
+  "packages": {
+    "passagemath-schemes": "10.8.13",
+    "passagemath-eclib": "10.8.13",
+    "passagemath-symbolics": "10.8.13",
+    "passagemath-pari": "10.8.13"
+  },
+  "source_sha256": {
+    "ell_rational_field.py": "c3c479b24e6f56cce84a01320e9630bf4147ed828e186341ca81362ee7e2c251",
+    "mod_sym_num.cpython-312-x86_64-linux-gnu.so": "00fbdb853fabd73a10ea2ddefdfe37cbd3eaba02e0b73ac5fefd6451d1e626de",
+    "padic_lseries.py": "f0e96cf4525b8cbda7d7dd565627f7f9ee506f09f65e16a5168138064f221ad8",
+    "padics.py": "b47e4bc4f15bc30552f610126fae4114ebbce7c615226543a3775d3273b447e0",
+    "sha_tate.py": "516b300ea9346e973f6f79689b1e7d8bdc19e2d4584c89d61e6d509877eef153"
+  },
+  "rows": [
+    {
+      "p": 5,
+      "a_p": -3,
+      "good_reduction": true,
+      "ordinary": true,
+      "backend_mod_p_surjective": true,
+      "frobenius_irreducibility_witness": {
+        "q": 3,
+        "a_q": -2,
+        "discriminant_mod_p": 2
+      },
+      "auxiliary_multiplicative_prime": 389,
+      "minimal_discriminant_valuation": 1,
+      "proved_upper_bound_exponent": 0,
+      "proved_order_upper_bound": 1,
+      "padic_ratio_default": "1 + O(5)",
+      "default_absolute_precision": 1,
+      "padic_ratio_higher_precision": "1 + O(5^2)",
+      "higher_absolute_precision": 2,
+      "conclusion": "Sha[p^infinity] is trivial, by the implemented proved upper bound"
+    },
+    {
+      "p": 7,
+      "a_p": -5,
+      "good_reduction": true,
+      "ordinary": true,
+      "backend_mod_p_surjective": true,
+      "frobenius_irreducibility_witness": {
+        "q": 2,
+        "a_q": -2,
+        "discriminant_mod_p": 3
+      },
+      "auxiliary_multiplicative_prime": 389,
+      "minimal_discriminant_valuation": 1,
+      "proved_upper_bound_exponent": 0,
+      "proved_order_upper_bound": 1,
+      "padic_ratio_default": "1 + O(7)",
+      "default_absolute_precision": 1,
+      "padic_ratio_higher_precision": "1 + O(7^2)",
+      "higher_absolute_precision": 2,
+      "conclusion": "Sha[p^infinity] is trivial, by the implemented proved upper bound"
+    },
+    {
+      "p": 11,
+      "a_p": -4,
+      "good_reduction": true,
+      "ordinary": true,
+      "backend_mod_p_surjective": true,
+      "frobenius_irreducibility_witness": {
+        "q": 2,
+        "a_q": -2,
+        "discriminant_mod_p": 7
+      },
+      "auxiliary_multiplicative_prime": 389,
+      "minimal_discriminant_valuation": 1,
+      "proved_upper_bound_exponent": 0,
+      "proved_order_upper_bound": 1,
+      "padic_ratio_default": "1 + O(11)",
+      "default_absolute_precision": 1,
+      "padic_ratio_higher_precision": "1 + O(11^2)",
+      "higher_absolute_precision": 2,
+      "conclusion": "Sha[p^infinity] is trivial, by the implemented proved upper bound"
+    },
+    {
+      "p": 13,
+      "a_p": -3,
+      "good_reduction": true,
+      "ordinary": true,
+      "backend_mod_p_surjective": true,
+      "frobenius_irreducibility_witness": {
+        "q": 3,
+        "a_q": -2,
+        "discriminant_mod_p": 5
+      },
+      "auxiliary_multiplicative_prime": 389,
+      "minimal_discriminant_valuation": 1,
+      "proved_upper_bound_exponent": 0,
+      "proved_order_upper_bound": 1,
+      "padic_ratio_default": "1 + O(13)",
+      "default_absolute_precision": 1,
+      "padic_ratio_higher_precision": "1 + O(13^2)",
+      "higher_absolute_precision": 2,
+      "conclusion": "Sha[p^infinity] is trivial, by the implemented proved upper bound"
+    }
+  ],
+  "formal_Lean_proof": false,
+  "portable_independent_certificate": false,
+  "all_Sha_triviality_proved": false,
+  "prime_3_status": {
+    "status": "backend_not_implemented",
+    "exception": "p (=3) must be at least 5",
+    "Sha3_triviality_proved": false
+  },
+  "unbounded_primes_status": "not established by this replay",
+  "trust_boundary": "Sage/PassageMath arithmetic implementation, its precision analysis, and the cited Stein--Wuthrich/Kato theorem; not inferred from an approximate BSD equality",
+  "runner_sha256": "522849456daaabc3433d2c6db3ec01192b5e18d62907491c969cbe0b100d6b2c"
+}

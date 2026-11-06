@@ -1,0 +1,43 @@
+test_descent_arithmetic_inputs (test_arithmetic389.Curve389Tests.test_descent_arithmetic_inputs) ... ok
+test_fourier_coefficients_independent_of_pari (test_arithmetic389.Curve389Tests.test_fourier_coefficients_independent_of_pari) ... ok
+test_height_lower_bound_and_saturation_cutoff (test_arithmetic389.Curve389Tests.test_height_lower_bound_and_saturation_cutoff) ... ok
+test_new_enclosures_validate_original_numeric_claims (test_arithmetic389.Curve389Tests.test_new_enclosures_validate_original_numeric_claims) ... ok
+test_pari_descent_and_exact_symbol (test_arithmetic389.Curve389Tests.test_pari_descent_and_exact_symbol) ... ok
+test_precision_and_tail_crosscheck (test_arithmetic389.Curve389Tests.test_precision_and_tail_crosscheck) ... ok
+test_reversed_interval_rejected (test_arithmetic389.Curve389Tests.test_reversed_interval_rejected) ... ok
+test_torsion_counts_and_claim_boundary (test_arithmetic389.Curve389Tests.test_torsion_counts_and_claim_boundary) ... ok
+test_bad_cover_square_and_norm_rejected (test_full_descent_389.FullDescent389Tests.test_bad_cover_square_and_norm_rejected) ... ok
+test_bools_not_integers (test_full_descent_389.FullDescent389Tests.test_bools_not_integers) ... ok
+test_changed_field_and_curve_rejected (test_full_descent_389.FullDescent389Tests.test_changed_field_and_curve_rejected) ... ok
+test_changed_point_rejected (test_full_descent_389.FullDescent389Tests.test_changed_point_rejected) ... ok
+test_complete_finite_witnesses (test_full_descent_389.FullDescent389Tests.test_complete_finite_witnesses) ... ok
+test_corrupted_local_square_root_rejected (test_full_descent_389.FullDescent389Tests.test_corrupted_local_square_root_rejected) ... ok
+test_cubic_arithmetic_independent_evaluation (test_full_descent_389.FullDescent389Tests.test_cubic_arithmetic_independent_evaluation) ... ok
+test_duplicate_key_rejected (test_full_descent_389.FullDescent389Tests.test_duplicate_key_rejected) ... ok
+test_fabricated_unit_rejected (test_full_descent_389.FullDescent389Tests.test_fabricated_unit_rejected) ... ok
+test_false_root_bracket_and_minkowski_bound_rejected (test_full_descent_389.FullDescent389Tests.test_false_root_bracket_and_minkowski_bound_rejected) ... ok
+test_optimized_python_retains_checks (test_full_descent_389.FullDescent389Tests.test_optimized_python_retains_checks) ... ok
+test_schema_no_extra_arithmetic_claims (test_full_descent_389.FullDescent389Tests.test_schema_no_extra_arithmetic_claims) ... ok
+test_empty_or_duplicate_selection_rejected (test_odd_prime_guards.OddPrimeGuardTests.test_empty_or_duplicate_selection_rejected) ... ok
+test_irreducibility_witnesses_by_independent_square_enumeration (test_odd_prime_guards.OddPrimeGuardTests.test_irreducibility_witnesses_by_independent_square_enumeration) ... ok
+test_unreviewed_primes_fail_before_backend_import (test_odd_prime_guards.OddPrimeGuardTests.test_unreviewed_primes_fail_before_backend_import) ... ok
+test_axiom_log_rejects_unsafe_or_missing_reports (test_trust_chain.TrustChainTests.test_axiom_log_rejects_unsafe_or_missing_reports) ... ok
+test_broken_sample_rejected (test_trust_chain.TrustChainTests.test_broken_sample_rejected) ... ok
+test_curve_obstruction (test_trust_chain.TrustChainTests.test_curve_obstruction) ... ok
+test_default_cli_fails_closed (test_trust_chain.TrustChainTests.test_default_cli_fails_closed) ... ok
+test_duplicate_keys_rejected (test_trust_chain.TrustChainTests.test_duplicate_keys_rejected) ... ok
+test_generated_file_is_current (test_trust_chain.TrustChainTests.test_generated_file_is_current) ... ok
+test_generator_does_not_overwrite_on_failure (test_trust_chain.TrustChainTests.test_generator_does_not_overwrite_on_failure) ... ok
+test_legacy_digest_does_not_bind_decimal_tokens (test_trust_chain.TrustChainTests.test_legacy_digest_does_not_bind_decimal_tokens) ... ok
+test_main_receipt_exact (test_trust_chain.TrustChainTests.test_main_receipt_exact) ... ok
+test_mutation_without_new_digest_rejected (test_trust_chain.TrustChainTests.test_mutation_without_new_digest_rejected) ... ok
+test_nonfinite_rejected (test_trust_chain.TrustChainTests.test_nonfinite_rejected) ... ok
+test_rehashed_fabrication_cannot_prove_arithmetic (test_trust_chain.TrustChainTests.test_rehashed_fabrication_cannot_prove_arithmetic) ... ok
+test_rejected_inputs (test_trust_chain.TrustChainTests.test_rejected_inputs) ... ok
+test_sage_runner_refuses_fixture_copy (test_trust_chain.TrustChainTests.test_sage_runner_refuses_fixture_copy) ... ok
+test_smith_valid_and_invalid (test_trust_chain.TrustChainTests.test_smith_valid_and_invalid) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 4.482s
+
+OK

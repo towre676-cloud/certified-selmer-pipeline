@@ -2,7 +2,7 @@
 
 **Current status: a curve-specific arithmetic proof and rigorous numerical replay; end-to-end Lean Selmer certification remains open.**
 
-The historical 389a1 receipts contain unverified arithmetic assertions. The old Sage runner copied a fixture, and the old Lean generator proved only `True`. The corrected interface refuses arithmetic certification until actual descent witnesses and arithmetic proofs are supplied.
+The historical 389a1 receipts contain unverified arithmetic assertions. The old Sage runner copied a fixture, and the old Lean generator proved only `True`. The generic receipt-to-Lean interface refuses arithmetic certification until formal descent witnesses and bridge proofs are supplied.
 
 See [the trust-chain audit and proof architecture](docs/TRUST_CHAIN_AUDIT.md) for the exact target, missing mathematical inputs, and the obstruction to applying PerfectPower's rational two-isogeny models directly to 389a1.
 
@@ -30,13 +30,14 @@ Explicit receipt scope emits kernel-checkable literal inequalities, never a Selm
 
 [The new arithmetic proof](arithmetic/CURVE389_PROOF.md) establishes rank two, a full Mordell–Weil basis, 2-Selmer dimension two and 2-primary Sha vanishing using standard mathematical theorems with independently checked curve-specific calculations. It supplies rigorous regulator, period and L-leading-coefficient enclosures. A separate fresh PARI full descent agrees.
 
-This is a mathematical proof with executable arithmetic checks, not a complete Lean formalization. There are now 19 limited kernel-replayed statements. Full Sha triviality remains unproved, and the generic arithmetic proof generator continues to fail closed.
+This is a mathematical proof with executable arithmetic checks, not a complete Lean formalization. The first arithmetic follow-up had 19 limited kernel-replayed statements; the integrated core now has 42, with seven actual-curve declarations in the optional Mathlib project. Full Sha triviality remains unproved, and the generic arithmetic proof generator continues to fail closed.
 
 ```bash
 python3 -m pip install -r arithmetic/requirements.txt
 python3 arithmetic/verify_389.py
 python3 arithmetic/pari_replay.py
 ```
+
 
 
 ## Portable full-descent witnesses and integrated Lean replay
@@ -55,8 +56,16 @@ python3 python/audit_lean.py
 
 The `CertifiedSelmer.FullDescent389` module is now part of the default build.
 Fresh Lean 4.20.0 replay covers 42 audited declarations with empty transitive
-axiom lists, including 23 new finite descent facts; all 35 Python tests pass.
+axiom lists, including 23 new finite descent facts; the original integrated suite had 35 passing Python tests (39 after the extension and November 6 audit regression).
 The actual number-field, local-field and cohomological bridges remain in the
 written proof, outside this Lean replay. The generic arithmetic certificate
 generator stays fail-closed. Existing analytic and saturation work is preserved
 and tested separately. No full Sha triviality or full BSD theorem is claimed.
+
+## Actual-curve formal bridge and odd-primary extension
+
+[The new progress report](docs/ODD_PRIMARY_AND_FORMAL_PROGRESS.md) records a complete Mathlib proof that the actual rational point group has no nonidentity two-power torsion, plus fresh theorem-backed Sage/PassageMath bounds proving the 5-, 7-, 11- and 13-primary Sha parts trivial. The latter computations are a trusted CAS layer, not Lean proofs or portable independent certificates.
+
+The integrated core library contains 42 axiom-free declarations. The optional [Mathlib project](formal_mathlib/README.md) adds seven actual-curve declarations, audited against the three standard Lean axioms. End-to-end formal rank/Selmer/Sha proofs remain open. The pinned odd-primary backend rejects p=3; full Sha finiteness and triviality are not established.
+
+See [the November 6 integration review](docs/INTEGRATION_REVIEW_2026-11-06.md) for ancestry, fresh replay, corrections and remaining verification boundaries.

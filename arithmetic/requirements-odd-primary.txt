@@ -1,0 +1,3 @@
+passagemath-schemes==10.8.13
+passagemath-eclib==10.8.13
+passagemath-symbolics==10.8.13

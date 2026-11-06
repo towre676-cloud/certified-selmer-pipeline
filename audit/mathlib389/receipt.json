@@ -1,0 +1,53 @@
+{
+  "Sha_theorem_formalized": false,
+  "actual_rational_curve_two_primary_torsion_formalized": true,
+  "declarations": {
+    "CertifiedSelmer.Mathlib389.affine_not_two_torsion": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.discriminant_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.divisionCubic_monic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.divisionCubic_no_rat_root": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.elliptic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.two_power_torsion_trivial": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.two_torsion_trivial": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "lean_version": "Lean (version 4.20.0, x86_64-unknown-linux-gnu, commit 77cfc4d1a4f6, Release)",
+  "mathlib_revision": "c211948581bde9846a99e32d97a03f0d5307c31e",
+  "rank_theorem_formalized": false,
+  "source_sha256": {
+    "Audit.lean": "6f13a69a7c866e7f21aca5778aab993c209efb21fe9f657bc2eda53d2f4b476c",
+    "Curve389.lean": "dddb0896d158bea9104301a4ea9220fc046ebcd3f1594bd2baee8ae2f664f4f4",
+    "lake-manifest.json": "ea415c498869f61cb331a2787ff8f117ea3ffe40eca7cb18075623ff8b402f69",
+    "lakefile.toml": "00ad4c714aee168653819aaeb03413e3e1aff7e03b7d39a08cf627c65c405e4f",
+    "lean-toolchain": "b1a88ff98b9eb4f96aaf762f9d1ef0e692c9e52a80c51bbb58f3686a6f01571f",
+    "replay.py": "51b6d2e9e61656fa17845bdaeeb3daf44803657e5087be8ae64cb11567328ab0"
+  },
+  "status": "kernel_replay_passed"
+}

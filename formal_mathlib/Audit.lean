@@ -1,0 +1,8 @@
+import Curve389
+#print axioms CertifiedSelmer.Mathlib389.divisionCubic_monic
+#print axioms CertifiedSelmer.Mathlib389.divisionCubic_no_rat_root
+#print axioms CertifiedSelmer.Mathlib389.affine_not_two_torsion
+#print axioms CertifiedSelmer.Mathlib389.discriminant_eq
+#print axioms CertifiedSelmer.Mathlib389.elliptic
+#print axioms CertifiedSelmer.Mathlib389.two_torsion_trivial
+#print axioms CertifiedSelmer.Mathlib389.two_power_torsion_trivial

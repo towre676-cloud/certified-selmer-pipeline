@@ -1,0 +1,56 @@
+name: Actual-curve formal bridge and odd-primary CAS replay
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  formal-curve-bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formal_mathlib
+          auto-config: 'false'
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'false'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Get pinned Mathlib dependency cache
+        working-directory: formal_mathlib
+        run: >-
+          lake exe cache get
+          Mathlib.RingTheory.Polynomial.RationalRoot
+          Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
+          Mathlib.Tactic.ComputeDegree
+          Mathlib.Tactic.NormNum
+          Mathlib.Tactic.Ring
+          Mathlib.Tactic.Linarith
+          Mathlib.Tactic.LinearCombination
+      - name: Replay typed curve theorems and transitive axiom audit
+        run: python3 formal_mathlib/replay.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: actual-curve-mathlib389-audit
+          path: audit/mathlib389/
+  odd-primary-cas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned arithmetic backend
+        run: python3 -m pip install -r arithmetic/requirements-odd-primary.txt
+      - name: Replay proved upper bounds at four reviewed primes
+        run: python3 arithmetic/odd_primary_replay.py --output audit/odd-primary-ci.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: odd-primary-CAS-audit-not-Lean
+          path: audit/odd-primary-ci.json
