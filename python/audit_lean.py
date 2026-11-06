@@ -7,11 +7,10 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 
-def check_axiom_log(log, expected):
+def check_axiom_log(log, expected, allowed=frozenset()):
     rows = re.findall(r"'([^']+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)",log)
     if [n for n,_ in rows] != expected:
         raise RuntimeError('missing, duplicate or unexpected axiom report')
-    allowed = {'propext','Classical.choice','Quot.sound'}
     report = {}
     for name, axioms in rows:
         actual = {s.strip() for s in axioms.split(',') if s.strip()}

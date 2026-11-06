@@ -103,6 +103,17 @@ class TrustChainTests(unittest.TestCase):
                     "'A' depends on axioms: [unprovedArithmetic]"):
             with self.assertRaises(RuntimeError): check_axiom_log(log, ['A'])
 
+    def test_core_axiom_audit_requires_empty_lists(self):
+        for axiom in ('propext', 'Classical.choice', 'Quot.sound'):
+            log = f"'A' depends on axioms: [{axiom}]"
+            with self.assertRaises(RuntimeError):
+                check_axiom_log(log, ['A'])
+            self.assertEqual(check_axiom_log(log, ['A'], allowed={axiom}),
+                             {'A': [axiom]})
+        with self.assertRaises(RuntimeError):
+            check_axiom_log("'A' depends on axioms: [sorryAx]", ['A'],
+                            allowed={'propext', 'Classical.choice', 'Quot.sound'})
+
     def test_legacy_digest_does_not_bind_decimal_tokens(self):
         # Deliberately documents a legacy limitation; NOT a stronger digest claim.
         self.path.write_text(self.raw.replace('0.15246017794314362',
