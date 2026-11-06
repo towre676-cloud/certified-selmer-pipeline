@@ -24,13 +24,13 @@ jobs:
         working-directory: formal_mathlib
         run: >-
           lake exe cache get
-          Mathlib/RingTheory/Polynomial/RationalRoot.lean
-          Mathlib/AlgebraicGeometry/EllipticCurve/Affine/Point.lean
-          Mathlib/Tactic/ComputeDegree.lean
-          Mathlib/Tactic/NormNum.lean
-          Mathlib/Tactic/Ring.lean
-          Mathlib/Tactic/Linarith.lean
-          Mathlib/Tactic/LinearCombination.lean
+          Mathlib.RingTheory.Polynomial.RationalRoot
+          Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
+          Mathlib.Tactic.ComputeDegree
+          Mathlib.Tactic.NormNum
+          Mathlib.Tactic.Ring
+          Mathlib.Tactic.Linarith
+          Mathlib.Tactic.LinearCombination
       - name: Replay typed curve theorems and transitive axiom audit
         run: python3 formal_mathlib/replay.py
       - uses: actions/upload-artifact@v4

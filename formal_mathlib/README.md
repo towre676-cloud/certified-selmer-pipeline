@@ -17,7 +17,7 @@ Pinned versions: Lean 4.20.0 and Mathlib commit `c211948581bde9846a99e32d97a03f0
 
 ```bash
 cd formal_mathlib
-lake exe cache get Mathlib/RingTheory/Polynomial/RationalRoot.lean Mathlib/AlgebraicGeometry/EllipticCurve/Affine/Point.lean Mathlib/Tactic/ComputeDegree.lean Mathlib/Tactic/NormNum.lean Mathlib/Tactic/Ring.lean Mathlib/Tactic/Linarith.lean Mathlib/Tactic/LinearCombination.lean
+lake exe cache get Mathlib.RingTheory.Polynomial.RationalRoot Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point Mathlib.Tactic.ComputeDegree Mathlib.Tactic.NormNum Mathlib.Tactic.Ring Mathlib.Tactic.Linarith Mathlib.Tactic.LinearCombination
 python3 replay.py
 ```
 

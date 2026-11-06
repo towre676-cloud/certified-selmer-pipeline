@@ -2,7 +2,7 @@
   "baseline_commit": "1be3c5939ed942d82377daa697227e8452eb5747",
   "historical_manifests": "Other baseline-keyed manifests describe earlier snapshots; this manifest describes this reviewed extension.",
   "source_sha256": {
-    ".github/workflows/arithmetic-extensions.yml": "69605217bfbd8dbba4ab45b0f6cae289df8021cef308341dc691482ca20b65be",
+    ".github/workflows/arithmetic-extensions.yml": "62ee4c6db973c531cf3b3b9ec1edfeae530c98b9d644d6bb70aa1cabda24de6b",
     ".github/workflows/lean.yml": "57bd3f4a62272bcb63745e7225bfda0947d005cce1ec908e968596c5250b67ce",
     ".gitignore": "c8e9bd2a6631a02e7d06ab394646c891b223e39073e804f6217774495d8f8d09",
     "LICENSE": "e03a1515bf81cc02c2096f91f27b1d6649ff519cac6a5fd0d31b6295ccd07d6b",
@@ -25,7 +25,7 @@
     "docs/TRUST_CHAIN_AUDIT.md": "463d1dfe5cce13709c7fbc5410590efff89740b1d36a08e7750513c2f2bbad5b",
     "formal_mathlib/Audit.lean": "6f13a69a7c866e7f21aca5778aab993c209efb21fe9f657bc2eda53d2f4b476c",
     "formal_mathlib/Curve389.lean": "dddb0896d158bea9104301a4ea9220fc046ebcd3f1594bd2baee8ae2f664f4f4",
-    "formal_mathlib/README.md": "41caad2b3db7cd2d04c5a4228eeee8cc1f57819408bd5d2272a00a12b3df73b8",
+    "formal_mathlib/README.md": "823de831bbec656a96407a51ff702db5e8a043d77452d222f9fc57766d42e9b2",
     "formal_mathlib/lake-manifest.json": "ea415c498869f61cb331a2787ff8f117ea3ffe40eca7cb18075623ff8b402f69",
     "formal_mathlib/lakefile.toml": "00ad4c714aee168653819aaeb03413e3e1aff7e03b7d39a08cf627c65c405e4f",
     "formal_mathlib/lean-toolchain": "b1a88ff98b9eb4f96aaf762f9d1ef0e692c9e52a80c51bbb58f3686a6f01571f",
