@@ -1,0 +1,14 @@
+{
+  "status": "installed_and_kernel_replayed",
+  "official_archive": "https://github.com/leanprover/lean4/releases/download/v4.20.0/lean-4.20.0-linux.tar.zst",
+  "archive_sha256": "f3b058430f87dd9569c7ebd269f0af1be7b010b754849b543ee6cf9ccc08d4f0",
+  "lean_version": "Lean (version 4.20.0, x86_64-unknown-linux-gnu, commit 77cfc4d1a4f6, Release)",
+  "lake_version": "Lake version 5.0.0-77cfc4d (Lean version 4.20.0)",
+  "runtime_compatibility": "Container does not resolve /proc/<own-pid>/exe; startup-only LD_PRELOAD redirects exactly that path to /proc/self/exe. Lean and kernel binaries are unmodified.",
+  "compatibility_source": "scripts/lean_proc_self_compat.c",
+  "kernel_or_compiler_modified": false,
+  "new_finite_theorems": 23,
+  "audited_total": 42,
+  "all_transitive_axiom_lists_empty": true,
+  "formal_rank_and_Sha_theorem": false
+}

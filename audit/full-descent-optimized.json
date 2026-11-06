@@ -1,0 +1,64 @@
+{
+  "status": "exact_finite_witnesses_passed",
+  "field_discriminant": 1556,
+  "trace_pairing": [
+    [
+      3,
+      1,
+      19
+    ],
+    [
+      1,
+      19,
+      -5
+    ],
+    [
+      19,
+      -5,
+      155
+    ]
+  ],
+  "minkowski_bound_strictly_less_than": 9,
+  "principal_small_prime_norms": [
+    -2,
+    3
+  ],
+  "finite_valuation_support_after_local_lemma": [],
+  "unit_norm_kernel_dimension_by_Dirichlet": 2,
+  "independence_obstructions": [
+    "real sign of P and PQ",
+    "Q residue 2 at (3,beta-2)"
+  ],
+  "local_image_basis_points": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ]
+  ],
+  "finite_field_counts": {
+    "5": 9,
+    "7": 13
+  },
+  "local_images_on_P_Q": {
+    "real": [
+      1,
+      0
+    ],
+    "2": [
+      1,
+      1
+    ],
+    "389": [
+      1,
+      0
+    ]
+  },
+  "square_residues_mod8_enumerated": 512,
+  "formal_arithmetic_certified": false,
+  "theory_boundary": "docs/FULL_2_DESCENT_389.md",
+  "analytic_or_numerical_certification_performed": false
+}

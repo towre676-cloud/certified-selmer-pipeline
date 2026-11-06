@@ -1,52 +1,79 @@
-import json, hashlib, os, sys
+"""Legacy receipt integrity and exact decimal consistency; NOT arithmetic certification."""
+import argparse
+from decimal import Decimal
+from fractions import Fraction
+import hashlib
+import json
+from pathlib import Path
+import re
 
-# Load receipts bundle (text + parse)
-raw = open("receipts.json","rb").read()
-d = json.loads(raw)
+class VerificationError(ValueError):
+    pass
 
-# Canonical payload: same JSON but without `merkle_root`
-payload = dict(d)
-payload.pop("merkle_root", None)
-canon = json.dumps(payload, separators=(',',':')).encode('utf-8')
-computed = hashlib.sha256(canon).hexdigest()
+def require(condition, message):
+    if not condition:
+        raise VerificationError(message)
 
-# If embedded root missing or wrong, fail with a helpful message
-embedded = d.get("merkle_root")
-if embedded != computed:
-    print("[error] Merkle root mismatch (canonical)")
-    print("  expected:", embedded)
-    print("  computed:", computed)
-    sys.exit(2)
+def unique_object(pairs):
+    result = {}
+    for key, value in pairs:
+        require(key not in result, f'duplicate JSON key: {key}')
+        result[key] = value
+    return result
 
-# Basic interval checks (strict positivity where required)
-def ok_interval(key, positive=True):
-    a,b = d[key]
-    if not (a < b):
-        print(f"[error] {key} not strictly increasing: {a} !< {b}")
-        sys.exit(3)
-    if positive and not (a > 0):
-        print(f"[error] {key} lower bound not > 0: {a}")
-        sys.exit(4)
-    return a,b
+def reject_constant(value):
+    raise VerificationError(f'nonfinite JSON constant: {value}')
 
-regLo, regHi = ok_interval("reg_interval", positive=True)
-leadLo, leadHi = ok_interval("lead_coeff_interval", positive=True)
-smith = d.get("smith_diagonal", [])
-if smith != [1,1]:
-    print("[error] smith_diagonal != [1,1]:", smith)
-    sys.exit(5)
+def load_receipt(path):
+    raw = Path(path).read_text(encoding='utf-8')
+    # Historical binary64 digest convention ONLY for compatibility.
+    # Mathematical facts use separate exact decimal parsing below.
+    opts = dict(object_pairs_hook=unique_object, parse_constant=reject_constant)
+    legacy = json.loads(raw, **opts)
+    d = json.loads(raw, parse_float=Decimal, **opts)
+    keys = {'curve', 'prime', 'merkle_root', 'reg_interval', 'smith_diagonal',
+            'analytic_rank', 'lead_coeff_interval'}
+    require(isinstance(d, dict) and set(d) == keys, 'unexpected receipt schema')
+    require(d['curve'] == '389a1', 'wrong curve')
+    require(type(d['prime']) is int and d['prime'] == 2, 'wrong prime')
+    require(type(d['analytic_rank']) is int and d['analytic_rank'] >= 0,
+            'invalid asserted analytic rank')
+    require(isinstance(d['smith_diagonal'], list) and
+            all(type(x) is int for x in d['smith_diagonal']) and
+            d['smith_diagonal'] == [1, 1], 'unexpected asserted Smith diagonal')
+    root = legacy.pop('merkle_root')
+    require(isinstance(root, str) and re.fullmatch(r'[0-9a-f]{64}', root),
+            'invalid SHA-256 format')
+    try:
+        canonical = json.dumps(legacy, separators=(',', ':'), allow_nan=False).encode()
+    except ValueError as exc:
+        raise VerificationError('legacy digest contains nonfinite values') from exc
+    require(hashlib.sha256(canonical).hexdigest() == root, 'payload digest mismatch')
+    for key in ('reg_interval', 'lead_coeff_interval'):
+        pair = d[key]
+        require(isinstance(pair, list) and len(pair) == 2, f'bad {key} shape')
+        require(all(type(x) in (int, Decimal) for x in pair), f'bad {key} endpoints')
+        a, b = map(Fraction, pair)
+        require(0 < a < b, f'{key} must have positive ordered endpoints')
+        d[key] = (a, b)
+    return d
 
-# Emit Lean predicates module
-out = "lean/CertifiedSelmer/Predicates.lean"
-os.makedirs(os.path.dirname(out), exist_ok=True)
-with open(out, "w", encoding="utf-8") as f:
-    f.write("--! auto-generated verified predicates from receipts.json\n")
-    f.write("namespace CertifiedSelmer\n\n")
-    f.write(f"def regLoV : Float := {regLo}\n")
-    f.write(f"def leadLoV : Float := {leadLo}\n")
-    f.write(f"def smithDiagV : List Nat := [1,1]\n\n")
-    f.write("def regPositiveV : Prop := regLoV > 0\n")
-    f.write("def leadPositiveV : Prop := leadLoV > 0\n")
-    f.write("def smithIdentityV : Prop := smithDiagV = [1,1]\n\n")
-    f.write("end CertifiedSelmer\n")
-print("[ok] wrote lean/CertifiedSelmer/Predicates.lean and verified receipts")
+def require_arithmetic(_receipt):
+    raise VerificationError('arithmetic certification unavailable: no descent/local-condition '
+                            'certificate, MW independence proof, or enclosure derivation')
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('receipt', nargs='?', default='receipts.json')
+    parser.add_argument('--require-arithmetic', action='store_true')
+    args = parser.parse_args()
+    try:
+        d = load_receipt(args.receipt)
+        if args.require_arithmetic:
+            require_arithmetic(d)
+    except (ValueError, OSError, TypeError) as exc:
+        parser.exit(2, f'REJECTED: {exc}\n')
+    print('PASS: legacy digest and exact decimal consistency only; arithmetic NOT certified')
+
+if __name__ == '__main__':
+    main()

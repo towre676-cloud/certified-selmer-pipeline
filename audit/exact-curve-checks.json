@@ -1,0 +1,44 @@
+{
+  "ainvs": [
+    0,
+    1,
+    1,
+    -2,
+    0
+  ],
+  "discriminant": 389,
+  "rational_root_candidates": [
+    -1,
+    1,
+    -2,
+    2,
+    -4,
+    4,
+    -8,
+    8,
+    -16,
+    16
+  ],
+  "polynomial_values": [
+    51,
+    -11,
+    88,
+    -24,
+    144,
+    16,
+    16,
+    528,
+    -2544,
+    4624
+  ],
+  "mod_five_residues": [
+    1,
+    4,
+    1,
+    3,
+    1
+  ],
+  "rational_two_torsion_order": 1,
+  "rank_certified": false,
+  "selmer_certified": false
+}

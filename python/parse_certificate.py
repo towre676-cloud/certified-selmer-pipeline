@@ -1,38 +1,47 @@
-import json, sys, os
+"""Generate receipt facts only on an explicit limited-scope request."""
+import argparse
+import os
+from pathlib import Path
+import tempfile
+from verify_receipts import load_receipt, require_arithmetic
 
-inp = sys.argv[1] if len(sys.argv)>1 else "receipts.json"
-out = sys.argv[sys.argv.index("--output")+1] if "--output" in sys.argv else "lean/CertifiedSelmer/Proofs/Selmer_389a1_2.lean"
+def render(d):
+    lines = ['-- Generated receipt syntax facts. No enclosure or Selmer theorem.',
+             'import CertifiedSelmer.Predicates', 'namespace CertifiedSelmer.Receipt389']
+    for name, key in (('reg', 'reg_interval'), ('lead', 'lead_coeff_interval')):
+        a, b = d[key]
+        lines += [f'def {name} : RationalInterval :=',
+                  f'  ⟨{a.numerator}, {a.denominator}, {b.numerator}, {b.denominator}⟩',
+                  f'theorem {name}_wellFormed : {name}.WellFormed := by decide']
+    lines += [f'def assertedAnalyticRank : Nat := {d["analytic_rank"]}',
+              'def assertedSmithDiagonal : List Nat := [1, 1]',
+              'theorem assertedSmith_identity : assertedSmithDiagonal = [1, 1] := rfl',
+              'end CertifiedSelmer.Receipt389', '']
+    return '\n'.join(lines)
 
-with open(inp, 'r', encoding='utf-8') as fh:
-    d = json.load(fh)
+def generate(inp, out, scope):
+    d = load_receipt(inp)
+    if scope != 'receipt':
+        require_arithmetic(d)
+    content = render(d)
+    out = Path(out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(mode='w', dir=out.parent, delete=False) as f:
+        tmp = f.name
+        f.write(content)
+    os.replace(tmp, out)
 
-os.makedirs(os.path.dirname(out), exist_ok=True)
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('receipt', nargs='?', default='receipts.json')
+    parser.add_argument('--output', default='lean/CertifiedSelmer/Proofs/Receipt_389a1_2.lean')
+    parser.add_argument('--scope', choices=('arithmetic', 'receipt'), default='arithmetic')
+    args = parser.parse_args()
+    try:
+        generate(args.receipt, args.output, args.scope)
+    except (ValueError, OSError, TypeError) as exc:
+        parser.exit(2, f'REJECTED: {exc}\n')
+    print('Generated receipt facts only; no arithmetic certification')
 
-def q(s):
-    # JSON string literal -> safe for Lean as a quoted String
-    return json.dumps(str(s))
-
-with open(out, 'w', encoding='utf-8') as f:
-    f.write("--! Auto-generated from receipts\n")
-    f.write("namespace CertifiedSelmer\n\n")
-
-    f.write("def curve : String := " + q(d.get("curve","")) + "\n")
-    f.write("def prime : Nat := " + str(d.get("prime",0)) + "\n")
-
-    lo, hi = d.get("reg_interval", [0.0, 0.0])
-    f.write("def regLo : Float := " + str(lo) + "\n")
-    f.write("def regHi : Float := " + str(hi) + "\n")
-
-    s = d.get("smith_diagonal", [])
-    f.write("def smithDiag : List Nat := [" + ",".join(map(str, s)) + "]\n")
-
-    ar = d.get("analytic_rank", 0)
-    f.write("def analyticRank : Nat := " + str(ar) + "\n")
-
-    a, b = d.get("lead_coeff_interval", [0.0, 0.0])
-    f.write("def leadLo : Float := " + str(a) + "\n")
-    f.write("def leadHi : Float := " + str(b) + "\n")
-
-    f.write("\n-- placeholder theorem; replace with proved predicates later\n")
-    f.write("theorem Selmer2inf_vanishes : True := True.intro\n\n")
-    f.write("end CertifiedSelmer\n")
+if __name__ == '__main__':
+    main()
