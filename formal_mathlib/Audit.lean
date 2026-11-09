@@ -1,4 +1,4 @@
-import Curve389
+import CubicField389
 #print axioms CertifiedSelmer.Mathlib389.divisionCubic_monic
 #print axioms CertifiedSelmer.Mathlib389.divisionCubic_no_rat_root
 #print axioms CertifiedSelmer.Mathlib389.affine_not_two_torsion
@@ -6,3 +6,41 @@ import Curve389
 #print axioms CertifiedSelmer.Mathlib389.elliptic
 #print axioms CertifiedSelmer.Mathlib389.two_torsion_trivial
 #print axioms CertifiedSelmer.Mathlib389.two_power_torsion_trivial
+#print axioms CertifiedSelmer.Mathlib389.CubicField.gZ_shift
+#print axioms CertifiedSelmer.Mathlib389.CubicField.shifted_eisenstein
+#print axioms CertifiedSelmer.Mathlib389.CubicField.g_irreducible
+#print axioms CertifiedSelmer.Mathlib389.CubicField.divisionCubic_comp
+#print axioms CertifiedSelmer.Mathlib389.CubicField.powerBasis_dim
+#print axioms CertifiedSelmer.Mathlib389.CubicField.finrank_K
+#print axioms CertifiedSelmer.Mathlib389.CubicField.beta_cubic
+#print axioms CertifiedSelmer.Mathlib389.CubicField.beta_quartic
+#print axioms CertifiedSelmer.Mathlib389.CubicField.theta_root
+#print axioms CertifiedSelmer.Mathlib389.CubicField.basis_apply
+#print axioms CertifiedSelmer.Mathlib389.CubicField.encode_mul
+#print axioms CertifiedSelmer.Mathlib389.CubicField.encode_scale
+#print axioms CertifiedSelmer.Mathlib389.CubicField.encode_one
+#print axioms CertifiedSelmer.Mathlib389.CubicField.encode_zero
+#print axioms CertifiedSelmer.Mathlib389.CubicField.repr_encode
+#print axioms CertifiedSelmer.Mathlib389.CubicField.encode_injective
+#print axioms CertifiedSelmer.Mathlib389.CubicField.norm_encode
+#print axioms CertifiedSelmer.Mathlib389.CubicField.trace_encode
+#print axioms CertifiedSelmer.Mathlib389.CubicField.trace_matrix
+#print axioms CertifiedSelmer.Mathlib389.CubicField.powerBasis_discriminant
+#print axioms CertifiedSelmer.Mathlib389.CubicField.divisionCubic_irreducible
+#print axioms CertifiedSelmer.Mathlib389.CubicField.divisionAlgebraEquiv_root
+#print axioms CertifiedSelmer.Mathlib389.CubicField.beta_integral
+#print axioms CertifiedSelmer.Mathlib389.CubicField.encode_mem_order
+#print axioms CertifiedSelmer.Mathlib389.CubicField.mem_order_iff
+#print axioms CertifiedSelmer.Mathlib389.CubicField.encode_integral
+#print axioms CertifiedSelmer.Mathlib389.CubicField.order_two_saturated
+#print axioms CertifiedSelmer.Mathlib389.CubicField.lift_cover
+#print axioms CertifiedSelmer.Mathlib389.CubicField.unitP_no_square_mod_eight
+#print axioms CertifiedSelmer.Mathlib389.CubicField.mul_389_mem_order
+#print axioms CertifiedSelmer.Mathlib389.CubicField.integral_lift_mod_eight
+#print axioms CertifiedSelmer.Mathlib389.CubicField.unitP_no_square_in_integers_mod_eight
+#print axioms CertifiedSelmer.Mathlib389.CubicField.division_power_discriminant
+#print axioms CertifiedSelmer.Mathlib389.CubicField.divisionCubic_eval_int
+#print axioms CertifiedSelmer.Mathlib389.CubicField.norm_X_sub_theta
+#print axioms CertifiedSelmer.Mathlib389.CubicField.unitP_not_isSquare
+#print axioms CertifiedSelmer.Mathlib389.CubicField.numberField
+#print axioms CertifiedSelmer.Mathlib389.CubicField.divisionAlgebraEquiv

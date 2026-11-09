@@ -8,3 +8,10 @@ rev = "c211948581bde9846a99e32d97a03f0d5307c31e"
 
 [[lean_lib]]
 name = "Curve389"
+
+[[require]]
+name = "CertifiedSelmer"
+path = "../lean"
+
+[[lean_lib]]
+name = "CubicField389"
