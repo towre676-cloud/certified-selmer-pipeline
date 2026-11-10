@@ -31,7 +31,16 @@ jobs:
           Mathlib.Tactic.Ring
           Mathlib.Tactic.Linarith
           Mathlib.Tactic.LinearCombination
-      - name: Replay typed curve theorems and transitive axiom audit
+          Mathlib.Algebra.Polynomial.SpecificDegree
+          Mathlib.Algebra.Polynomial.Taylor
+          Mathlib.NumberTheory.NumberField.Basic
+          Mathlib.RingTheory.Adjoin.PowerBasis
+          Mathlib.RingTheory.Discriminant
+          Mathlib.RingTheory.Polynomial.Eisenstein.IsIntegral
+          Mathlib.RingTheory.Polynomial.GaussLemma
+          Mathlib.Tactic.FinCases
+          Mathlib.Tactic.IntervalCases
+      - name: Replay curve and cubic field theorems, regression tests and axiom audit
         run: python3 formal_mathlib/replay.py
       - uses: actions/upload-artifact@v4
         if: always()

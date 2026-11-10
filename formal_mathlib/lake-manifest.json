@@ -3,6 +3,15 @@
   "packagesDir": ".lake/packages",
   "packages": [
     {
+      "type": "path",
+      "scope": "",
+      "name": "CertifiedSelmer",
+      "manifestFile": "lake-manifest.json",
+      "inherited": false,
+      "dir": "../lean",
+      "configFile": "lakefile.lean"
+    },
+    {
       "url": "https://github.com/leanprover-community/plausible",
       "type": "git",
       "subDir": null,

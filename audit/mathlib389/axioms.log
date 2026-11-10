@@ -5,3 +5,57 @@
 'CertifiedSelmer.Mathlib389.elliptic' depends on axioms: [propext, Classical.choice, Quot.sound]
 'CertifiedSelmer.Mathlib389.two_torsion_trivial' depends on axioms: [propext, Classical.choice, Quot.sound]
 'CertifiedSelmer.Mathlib389.two_power_torsion_trivial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.gZ_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.shifted_eisenstein' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.g_irreducible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.divisionCubic_comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.powerBasis_dim' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.finrank_K' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.beta_cubic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.beta_quartic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.theta_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.basis_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.encode_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.encode_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.encode_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.encode_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.repr_encode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.encode_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.norm_encode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.trace_encode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.trace_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.powerBasis_discriminant' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.divisionCubic_irreducible' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.divisionAlgebraEquiv_root' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.beta_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.encode_mem_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.mem_order_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.encode_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.order_two_saturated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.lift_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.unitP_no_square_mod_eight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.mul_389_mem_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.integral_lift_mod_eight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.unitP_no_square_in_integers_mod_eight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.division_power_discriminant' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.divisionCubic_eval_int' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.norm_X_sub_theta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.unitP_not_isSquare' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.numberField' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.divisionAlgebraEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
