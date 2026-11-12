@@ -44,3 +44,5 @@ import CubicField389
 #print axioms CertifiedSelmer.Mathlib389.CubicField.unitP_not_isSquare
 #print axioms CertifiedSelmer.Mathlib389.CubicField.numberField
 #print axioms CertifiedSelmer.Mathlib389.CubicField.divisionAlgebraEquiv
+#print axioms CertifiedSelmer.Mathlib389.CubicField.order_eq_integralClosure
+#print axioms CertifiedSelmer.Mathlib389.CubicField.field_discriminant

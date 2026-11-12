@@ -1,7 +1,9 @@
 {
   "Sha_theorem_formalized": false,
   "actual_rational_curve_two_primary_torsion_formalized": true,
+  "cubic_field_discriminant_formalized": true,
   "cubic_number_field_bridge_formalized": true,
+  "cubic_power_order_maximal_formalized": true,
   "declarations": {
     "CertifiedSelmer.Mathlib389.CubicField.basis_apply": [
       "Classical.choice",
@@ -88,6 +90,11 @@
       "Quot.sound",
       "propext"
     ],
+    "CertifiedSelmer.Mathlib389.CubicField.field_discriminant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "CertifiedSelmer.Mathlib389.CubicField.finrank_K": [
       "Classical.choice",
       "Quot.sound",
@@ -134,6 +141,11 @@
       "propext"
     ],
     "CertifiedSelmer.Mathlib389.CubicField.numberField": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.CubicField.order_eq_integralClosure": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -235,14 +247,14 @@
   "rank_theorem_formalized": false,
   "source_sha256": {
     "../lean/CertifiedSelmer/FullDescent389.lean": "22167708af1e5825aeb760a6eb6f6ebd560ce3b38bc74d1f07abacee066c155e",
-    "Audit.lean": "6c00ad1e94b2efa5cb32f50cda3d113cac3d294817f125a1614710d16683ccb1",
-    "CubicField389.lean": "15bffc4efad1a93dbcee41afd4a2bf61ee7320634cd8bdc2991c9d7a6f47ae83",
+    "Audit.lean": "e8a3626fabcf407cc40a6954b4fe532c406c95dde8c0385341b40decba7ab37e",
+    "CubicField389.lean": "1b23d04ea92fadd583b99e7d90a448cf85448f8a67921eaad802da0ffcad8739",
     "CubicField389Tests.lean": "fdd4c1f1a47c8dcc1a5777618ff9fb2720adf32226f6a6fc82eccca53c515f32",
     "Curve389.lean": "dddb0896d158bea9104301a4ea9220fc046ebcd3f1594bd2baee8ae2f664f4f4",
     "lake-manifest.json": "b96dfc8ccb7d86115b9b549369a4b0a9c2bf5d08f4141b444a4b3fd171996441",
     "lakefile.toml": "af1b156c6aac4d27482bcfb0903f53971a590cf086bd49a508ef41d039bf0bdb",
     "lean-toolchain": "b1a88ff98b9eb4f96aaf762f9d1ef0e692c9e52a80c51bbb58f3686a6f01571f",
-    "replay.py": "fc3519073438eaa0df386fb43ca6e0e0f68b5b0b85eced2a48b963e8aabc0c7c"
+    "replay.py": "966bbd0f939aad99fb80ad94668a3a5b0b4933b188cb76de13dac1e60ed767ea"
   },
   "status": "kernel_replay_passed"
 }
