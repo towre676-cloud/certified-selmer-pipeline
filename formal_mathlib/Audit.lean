@@ -1,4 +1,4 @@
-import CubicField389
+import ClassNumber389
 #print axioms CertifiedSelmer.Mathlib389.divisionCubic_monic
 #print axioms CertifiedSelmer.Mathlib389.divisionCubic_no_rat_root
 #print axioms CertifiedSelmer.Mathlib389.affine_not_two_torsion
@@ -46,3 +46,16 @@ import CubicField389
 #print axioms CertifiedSelmer.Mathlib389.CubicField.divisionAlgebraEquiv
 #print axioms CertifiedSelmer.Mathlib389.CubicField.order_eq_integralClosure
 #print axioms CertifiedSelmer.Mathlib389.CubicField.field_discriminant
+#print axioms CertifiedSelmer.Mathlib389.CubicField.field_signature
+#print axioms CertifiedSelmer.Mathlib389.CubicField.minkowski_bound
+#print axioms CertifiedSelmer.Mathlib389.CubicField.minkowski_floor
+#print axioms CertifiedSelmer.Mathlib389.CubicField.betaInteger
+#print axioms CertifiedSelmer.Mathlib389.CubicField.norm_betaInteger_sub
+#print axioms CertifiedSelmer.Mathlib389.CubicField.absNorm_betaInteger_sub_one
+#print axioms CertifiedSelmer.Mathlib389.CubicField.absNorm_betaInteger_sub_two
+#print axioms CertifiedSelmer.Mathlib389.CubicField.prime_over_two
+#print axioms CertifiedSelmer.Mathlib389.CubicField.prime_of_norm_three
+#print axioms CertifiedSelmer.Mathlib389.CubicField.no_ideal_of_norm_five
+#print axioms CertifiedSelmer.Mathlib389.CubicField.no_ideal_of_norm_seven
+#print axioms CertifiedSelmer.Mathlib389.CubicField.integers_principal
+#print axioms CertifiedSelmer.Mathlib389.CubicField.class_number

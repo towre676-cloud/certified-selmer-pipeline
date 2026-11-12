@@ -26,15 +26,17 @@ def main():
     command(['lake','build','+CertifiedSelmer.FullDescent389'],'witness-build.log')
     build_dir=ROOT/'.lake/build/lib/lean'
     build_dir.mkdir(parents=True,exist_ok=True)
-    for module, log in [('Curve389','build.log'), ('CubicField389','cubic-build.log')]:
+    for module, log in [('Curve389','build.log'), ('CubicField389','cubic-build.log'),
+                        ('ClassNumber389','class-number-build.log')]:
         target=build_dir/f'{module}.olean'
         command(['lake','env','lean','-o',str(target),f'{module}.lean'],log)
     command(['lake','env','lean','CubicField389Tests.lean'],'cubic-tests.log')
+    command(['lake','env','lean','ClassNumber389Tests.lean'],'class-number-tests.log')
     axioms=command(['lake','env','lean','Audit.lean'],'axioms.log')
     names=re.findall(r'^#print axioms (\S+)',(ROOT/'Audit.lean').read_text(),re.M)
     reports=check_axiom_log(axioms,names, allowed={'propext','Classical.choice','Quot.sound'})
     sources=['Curve389.lean','CubicField389.lean','CubicField389Tests.lean','Audit.lean',
-             'lakefile.toml','lake-manifest.json','lean-toolchain','replay.py',
+             'ClassNumber389.lean','ClassNumber389Tests.lean','lakefile.toml','lake-manifest.json','lean-toolchain','replay.py',
              '../lean/CertifiedSelmer/FullDescent389.lean']
     record={'status':'kernel_replay_passed','mathlib_revision':revision,
             'lean_version':subprocess.check_output(['lake','env','lean','--version'],cwd=ROOT,text=True).strip(),
@@ -42,6 +44,7 @@ def main():
             'cubic_number_field_bridge_formalized':True,
             'cubic_power_order_maximal_formalized':True,
             'cubic_field_discriminant_formalized':True,
+            'cubic_class_number_one_formalized':True,
             'modulo_eight_integer_ring_obstruction_formalized':True,
             'Sha_theorem_formalized':False,'rank_theorem_formalized':False,
             'source_sha256':{n:hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in sources}}
