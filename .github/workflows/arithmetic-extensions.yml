@@ -27,13 +27,13 @@ jobs:
           Mathlib.RingTheory.Polynomial.RationalRoot
           Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
           Mathlib.Tactic.ComputeDegree
-          Mathlib.Tactic.NormNum
+          Mathlib.Tactic.NormNum.Prime
           Mathlib.Tactic.Ring
           Mathlib.Tactic.Linarith
           Mathlib.Tactic.LinearCombination
           Mathlib.Algebra.Polynomial.SpecificDegree
           Mathlib.Algebra.Polynomial.Taylor
-          Mathlib.NumberTheory.NumberField.Basic
+          Mathlib.NumberTheory.NumberField.Discriminant.Defs
           Mathlib.RingTheory.Adjoin.PowerBasis
           Mathlib.RingTheory.Discriminant
           Mathlib.RingTheory.Polynomial.Eisenstein.IsIntegral

@@ -2,13 +2,14 @@ import Curve389
 import CertifiedSelmer.FullDescent389
 import Mathlib.Algebra.Polynomial.SpecificDegree
 import Mathlib.Algebra.Polynomial.Taylor
-import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
 import Mathlib.RingTheory.Adjoin.PowerBasis
 import Mathlib.RingTheory.Discriminant
 import Mathlib.RingTheory.Polynomial.Eisenstein.IsIntegral
 import Mathlib.RingTheory.Polynomial.GaussLemma
 import Mathlib.Tactic.FinCases
 import Mathlib.Tactic.IntervalCases
+import Mathlib.Tactic.NormNum.Prime
 
 /-! The rational division field and its power order for the 389a1 descent. -/
 
@@ -482,5 +483,133 @@ theorem unitP_not_isSquare : ¬ IsSquare (encode FullDescent389.unitP) := by
   apply h
   change z ^ 2 - encode FullDescent389.unitP = 8 * (0 : K)
   rw [hs, sub_self, mul_zero]
+
+private theorem order_and_discriminant :
+    order = integralClosure ℤ K ∧ NumberField.discr K = 1556 := by
+  classical
+  let b := NumberField.integralBasis K
+  let e := basis.reindex (basis.indexEquiv b)
+  have he (i) : e i ∈ order := by
+    rw [show e i = basis ((basis.indexEquiv b).symm i) from Basis.reindex_apply _ _ _,
+      basis_apply]
+    exact order.pow_mem (Algebra.self_mem_adjoin_singleton ℤ beta) _
+  let A := b.toMatrix e
+  let B := e.toMatrix b
+  -- The columns of A are the power basis in integral-basis coordinates.
+  have hA : ∀ i j, IsIntegral ℤ (A i j) := by
+    intro i j
+    let z : NumberField.RingOfIntegers K := ⟨e j, (adjoin_le_integralClosure beta_integral) (he j)⟩
+    change IsIntegral ℤ (b.repr (algebraMap _ _ z) i)
+    rw [NumberField.integralBasis_repr_apply]
+    exact isIntegral_algebraMap
+  -- The existing denominator bound makes the scaled inverse integral.
+  have hB : ∀ i j, IsIntegral ℤ (((389 : ℚ) • B) i j) := by
+    intro i j
+    have hb : IsIntegral ℤ (b j) := by
+      rw [NumberField.integralBasis_apply]
+      exact (NumberField.RingOfIntegers.basis K j).property
+    obtain ⟨x, hx⟩ := mem_order_iff.mp (mul_389_mem_order hb)
+    change IsIntegral ℤ ((389 : ℚ) • e.repr (b j) i)
+    rw [← Finsupp.smul_apply, ← map_smul]
+    have hscale : (389 : ℚ) • b j = 389 * b j := by norm_num [Algebra.smul_def]
+    rw [hscale, ← hx]
+    simp only [e, Basis.repr_reindex_apply, repr_encode]
+    generalize (basis.indexEquiv b).symm i = k
+    fin_cases k <;> exact isIntegral_algebraMap
+  obtain ⟨d, hd⟩ := IsIntegrallyClosed.isIntegral_iff.mp (IsIntegral.det hA)
+  obtain ⟨f, hf⟩ := IsIntegrallyClosed.isIntegral_iff.mp (IsIntegral.det hB)
+  change (d : ℚ) = A.det at hd
+  change (f : ℚ) = ((389 : ℚ) • B).det at hf
+  have hdisc : 1556 = d ^ 2 * NumberField.discr K := by
+    apply (Int.cast_injective (α := ℚ))
+    push_cast
+    rw [NumberField.coe_discr, hd]
+    change (1556 : ℚ) = (b.toMatrix e).det ^ 2 * Algebra.discr ℚ b
+    calc
+      (1556 : ℚ) = Algebra.discr ℚ e := by
+        simpa only [e, Basis.coe_reindex, Algebra.discr_reindex] using powerBasis_discriminant.symm
+      _ = (b.toMatrix e).det ^ 2 * Algebra.discr ℚ b := by
+        have h := b.toMatrix_map_vecMul e
+        rw [← Algebra.discr_of_matrix_vecMul, h]
+  have hprod : d * f = 389 ^ 3 := by
+    apply (Int.cast_injective (α := ℚ))
+    push_cast only [Int.cast_mul, Int.cast_pow, Int.cast_ofNat]
+    rw [hd, hf, Matrix.det_smul, ← mul_assoc, mul_comm A.det, mul_assoc, ← Matrix.det_mul]
+    have hab : A * B = 1 := Basis.toMatrix_mul_toMatrix_flip b e
+    rw [hab, Matrix.det_one, mul_one]
+    congr 1
+    rw [Fintype.card_congr (basis.indexEquiv b).symm, Fintype.card_fin]
+  have hd₁ : d ∣ (389 : ℤ) ^ 3 := ⟨f, hprod.symm⟩
+  have hd₂ : d ^ 2 ∣ (1556 : ℤ) := ⟨_, hdisc⟩
+  have hd₃ : d ∣ (389 : ℤ) := by
+    have h1556 : d ∣ (1556 : ℤ) := dvd_trans (dvd_pow_self _ (by decide)) hd₂
+    -- The gcd of the two multiples of d is 389.
+    have h := dvd_sub hd₁ (dvd_mul_of_dvd_right h1556 (37830 : ℤ))
+    norm_num at h
+    exact h
+  have hp : Prime (389 : ℤ) := Nat.prime_iff_prime_int.mp (by norm_num)
+  have hu : IsUnit d := by
+    rcases hp.irreducible.dvd_iff.mp hd₃ with h | h
+    · exact h
+    · have hdvd : (389 : ℤ) ∣ d := h.dvd
+      have hs : (389 : ℤ) ^ 2 ∣ (1556 : ℤ) := dvd_trans (pow_dvd_pow_of_dvd hdvd _) hd₂
+      norm_num at hs
+  have hdiscK : NumberField.discr K = 1556 := by
+    rcases Int.isUnit_iff.mp hu with h | h <;> simp [h] at hdisc <;> exact hdisc.symm
+  refine ⟨?_, hdiscK⟩
+  -- A unit determinant over ℤ gives an integer inverse.
+  have hBintegral : ∀ i j, IsIntegral ℤ (B i j) := by
+    choose entries hentries using fun i j => IsIntegrallyClosed.isIntegral_iff.mp (hA i j)
+    let C : Matrix _ _ ℤ := entries
+    have hC : C.map (Int.castRingHom ℚ) = A := by
+      ext i j
+      exact hentries i j
+    have hCd : C.det = d := by
+      apply (Int.cast_injective (α := ℚ))
+      change Int.castRingHom ℚ C.det = Int.castRingHom ℚ d
+      rw [RingHom.map_det]
+      change (C.map (Int.castRingHom ℚ)).det = (d : ℚ)
+      rw [hC]
+      exact hd.symm
+    obtain ⟨u, huC⟩ := (Matrix.isUnit_iff_isUnit_det C).mpr (hCd.symm ▸ hu)
+    let φ := (Int.castRingHom ℚ).mapMatrix
+      (m := Module.Free.ChooseBasisIndex ℤ (NumberField.RingOfIntegers K))
+    have hCinv : A * φ (↑u⁻¹) = 1 := by
+      rw [← map_one φ]
+      rw [← hC, ← show φ C = C.map (Int.castRingHom ℚ) from rfl,
+        ← map_mul, ← huC, Units.mul_inv]
+    have hBA : B * A = 1 := Basis.toMatrix_mul_toMatrix_flip e b
+    have h : B = φ (↑u⁻¹) := by
+      rw [← mul_one B, ← hCinv, ← mul_assoc, hBA, one_mul]
+    intro i j
+    rw [h]
+    exact isIntegral_algebraMap
+  apply le_antisymm (adjoin_le_integralClosure beta_integral)
+  intro z hz
+  let z' : NumberField.RingOfIntegers K := ⟨z, hz⟩
+  have hre (i) : IsIntegral ℤ (e.repr z i) := by
+    rw [← Basis.toMatrix_mulVec_repr b e z]
+    change IsIntegral ℤ (∑ j, B i j * b.repr z j)
+    apply IsIntegral.sum
+    intro j _
+    have hzj : IsIntegral ℤ (b.repr z j) := by
+      change IsIntegral ℤ (b.repr (algebraMap _ _ z') j)
+      rw [NumberField.integralBasis_repr_apply]
+      exact isIntegral_algebraMap
+    exact (hBintegral i j).mul hzj
+  rw [← e.sum_repr z]
+  apply order.sum_mem
+  intro i _
+  obtain ⟨n, hn⟩ := IsIntegrallyClosed.isIntegral_iff.mp (hre i)
+  rw [← hn, Algebra.smul_def, ← IsScalarTower.algebraMap_apply]
+  exact order.mul_mem (order.algebraMap_mem n) (he i)
+
+/-- The power order is the full integral closure of ℤ in the cubic field. -/
+theorem order_eq_integralClosure : order = integralClosure ℤ K :=
+  order_and_discriminant.1
+
+/-- The discriminant of the cubic number field for the 389a1 descent. -/
+theorem field_discriminant : NumberField.discr K = 1556 :=
+  order_and_discriminant.2
 
 end CertifiedSelmer.Mathlib389.CubicField

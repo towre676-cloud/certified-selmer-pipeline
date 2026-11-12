@@ -35,6 +35,19 @@ eight. The existing finite obstruction for `unitP` therefore gives the
 modulo-eight nonsquare obstruction in the actual ring of integers, and rules
 out a square root of `unitP` in `K`.
 
+The maximal-order proof compares the three powers of the integral root
+with Mathlib's integral basis. The two bases have the same finite rank
+because both give bases of `K` over `ℚ`. The change-of-basis matrix from
+power coordinates to integral coordinates has integer entries and
+determinant `d`. The discriminant change-of-basis formula gives
+`1556 = d² * NumberField.discr K`.
+
+The existing bound `mul_389_mem_order`, which uses saturation at 2, makes
+the inverse matrix integral after scaling by 389. Taking determinants
+gives `d ∣ 389³`. Since `389² ∤ 1556`, the determinant is a unit. The
+integer inverse proves `order_eq_integralClosure`, and the discriminant
+identity gives `field_discriminant`.
+
 ## Replay and scope
 
 The axiom audit allows only `propext`, `Classical.choice`, and `Quot.sound`.
@@ -51,10 +64,10 @@ lake exe cache get \
   Mathlib.RingTheory.Polynomial.RationalRoot \
   Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point \
   Mathlib.Algebra.Polynomial.SpecificDegree Mathlib.Algebra.Polynomial.Taylor \
-  Mathlib.NumberTheory.NumberField.Basic Mathlib.RingTheory.Adjoin.PowerBasis \
+  Mathlib.NumberTheory.NumberField.Discriminant.Defs Mathlib.RingTheory.Adjoin.PowerBasis \
   Mathlib.RingTheory.Discriminant Mathlib.RingTheory.Polynomial.Eisenstein.IsIntegral \
   Mathlib.RingTheory.Polynomial.GaussLemma Mathlib.Tactic.ComputeDegree \
-  Mathlib.Tactic.NormNum Mathlib.Tactic.Ring Mathlib.Tactic.Linarith \
+  Mathlib.Tactic.NormNum.Prime Mathlib.Tactic.Ring Mathlib.Tactic.Linarith \
   Mathlib.Tactic.LinearCombination Mathlib.Tactic.FinCases Mathlib.Tactic.IntervalCases
 python3 replay.py
 ```
@@ -62,7 +75,7 @@ python3 replay.py
 The replay emits proof modules, runs the regression examples, and records
 transitive axiom reports and source hashes in `audit/mathlib389/`.
 
-Remaining obligations include maximality at 389 and the field discriminant,
-the class-number and full unit arguments, local-field squareclass and
-local-image theorems, and the Kummer and Selmer objects and exactness needed
+Remaining obligations include the class-number and full unit arguments,
+local-field squareclass and local-image theorems, and the Kummer and
+Selmer objects and exactness needed
 for the rank and 2-primary Tate–Shafarevich conclusions.

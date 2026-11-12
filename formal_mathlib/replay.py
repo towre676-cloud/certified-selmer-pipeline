@@ -40,6 +40,8 @@ def main():
             'lean_version':subprocess.check_output(['lake','env','lean','--version'],cwd=ROOT,text=True).strip(),
             'declarations':reports,'actual_rational_curve_two_primary_torsion_formalized':True,
             'cubic_number_field_bridge_formalized':True,
+            'cubic_power_order_maximal_formalized':True,
+            'cubic_field_discriminant_formalized':True,
             'modulo_eight_integer_ring_obstruction_formalized':True,
             'Sha_theorem_formalized':False,'rank_theorem_formalized':False,
             'source_sha256':{n:hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in sources}}

@@ -59,3 +59,7 @@
 'CertifiedSelmer.Mathlib389.CubicField.unitP_not_isSquare' depends on axioms: [propext, Classical.choice, Quot.sound]
 'CertifiedSelmer.Mathlib389.CubicField.numberField' depends on axioms: [propext, Classical.choice, Quot.sound]
 'CertifiedSelmer.Mathlib389.CubicField.divisionAlgebraEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.order_eq_integralClosure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CertifiedSelmer.Mathlib389.CubicField.field_discriminant' depends on axioms: [propext, Classical.choice, Quot.sound]
