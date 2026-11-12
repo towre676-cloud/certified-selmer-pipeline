@@ -30,7 +30,7 @@ jobs:
           PIN="$(cat arithmetic/PERFECTJET_PIN.txt)"
           python -m pip install "git+https://github.com/towre676-cloud/PerfectJet.git@${PIN}"
       - name: Run bridge tests
-        run: python -m unittest tests.test_perfectjet_bridge -v
+        run: python -m unittest discover -s tests -p 'test_perfectjet_bridge.py' -v
       - name: Emit deterministic receipt
         run: |
           python arithmetic/perfectjet_bridge.py --output /tmp/perfectjet-cubic.json
