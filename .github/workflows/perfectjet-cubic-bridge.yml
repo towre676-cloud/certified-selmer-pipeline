@@ -1,0 +1,42 @@
+name: PerfectJet cubic arithmetic bridge
+on:
+  pull_request:
+    paths:
+      - 'arithmetic/perfectjet_bridge.py'
+      - 'arithmetic/PERFECTJET_PIN.txt'
+      - 'tests/test_perfectjet_bridge.py'
+      - 'docs/PERFECTJET_CUBIC_BRIDGE.md'
+      - '.github/workflows/perfectjet-cubic-bridge.yml'
+  push:
+    paths:
+      - 'arithmetic/perfectjet_bridge.py'
+      - 'arithmetic/PERFECTJET_PIN.txt'
+      - 'tests/test_perfectjet_bridge.py'
+      - 'docs/PERFECTJET_CUBIC_BRIDGE.md'
+      - '.github/workflows/perfectjet-cubic-bridge.yml'
+  workflow_dispatch:
+jobs:
+  exact-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned PerfectJet
+        shell: bash
+        run: |
+          PIN="$(cat arithmetic/PERFECTJET_PIN.txt)"
+          python -m pip install "git+https://github.com/towre676-cloud/PerfectJet.git@${PIN}"
+      - name: Run bridge tests
+        run: python -m unittest tests.test_perfectjet_bridge -v
+      - name: Emit deterministic receipt
+        run: |
+          python arithmetic/perfectjet_bridge.py --output /tmp/perfectjet-cubic.json
+          python arithmetic/perfectjet_bridge.py --output /tmp/perfectjet-cubic-2.json
+          diff -u /tmp/perfectjet-cubic.json /tmp/perfectjet-cubic-2.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: perfectjet-cubic-bridge
+          path: /tmp/perfectjet-cubic.json
