@@ -40,6 +40,9 @@ jobs:
           Mathlib.RingTheory.Polynomial.GaussLemma
           Mathlib.Tactic.FinCases
           Mathlib.Tactic.IntervalCases
+          Mathlib.NumberTheory.NumberField.ClassNumber
+          Mathlib.NumberTheory.NumberField.Norm
+          Mathlib.Tactic.FunProp
       - name: Replay curve and cubic field theorems, regression tests and axiom audit
         run: python3 formal_mathlib/replay.py
       - uses: actions/upload-artifact@v4
