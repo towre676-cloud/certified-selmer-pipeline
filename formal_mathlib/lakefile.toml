@@ -18,3 +18,6 @@ name = "CubicField389"
 
 [[lean_lib]]
 name = "ClassNumber389"
+
+[[lean_lib]]
+name = "UnitSquareclasses389"

@@ -38,6 +38,24 @@ private theorem realEmbedding_beta (x : ℝ) (hx : cubic x = 0) :
     ((realEmbedding x hx : K →+* ℂ) beta).re = x := by
   simp [realEmbedding, beta, AdjoinRoot.liftHom_root]
 
+theorem exists_real_embedding_beta_between_two_three :
+    ∃ e : K →+* ℝ, 2 < e beta ∧ e beta < 3 := by
+  obtain ⟨x, hx, hg⟩ := real_root 2 3 (by norm_num) (by norm_num [cubic])
+  have hx2 : 2 < x := lt_of_le_of_ne hx.1 (by
+    intro h
+    rw [← h] at hg
+    norm_num [cubic] at hg)
+  have hx3 : x < 3 := lt_of_le_of_ne hx.2 (by
+    intro h
+    rw [h] at hg
+    norm_num [cubic] at hg)
+  let e := (realEmbedding x hg).property.embedding
+  have he : e beta = x := by
+    have h := congrArg Complex.re ((realEmbedding x hg).property.coe_embedding_apply beta)
+    change e beta = _ at h
+    exact h.trans (realEmbedding_beta x hg)
+  exact ⟨e, by rwa [he], by rwa [he]⟩
+
 theorem field_signature : nrRealPlaces K = 3 ∧ nrComplexPlaces K = 0 := by
   classical
   obtain ⟨a, ha, hga⟩ := real_root (-4) (-3) (by norm_num) (by norm_num [cubic])
@@ -134,7 +152,8 @@ theorem prime_over_two (P : Ideal (𝓞 K)) (hP : P.IsPrime) (h2 : (2 : 𝓞 K) 
   rw [map_sub, map_one]
   exact pow_eq_zero hpow
 
-private def primeQuotientEquiv (P : Ideal (𝓞 K)) {p : ℕ}
+/-- The residue field of an ideal of prime absolute norm. -/
+def primeQuotientEquiv (P : Ideal (𝓞 K)) {p : ℕ}
     (hp : p.Prime) (hN : Ideal.absNorm P = p) : ZMod p ≃+* ((𝓞 K) ⧸ P) := by
   have hc : Nat.card ((𝓞 K) ⧸ P) = p := by
     rwa [Ideal.absNorm_apply, Submodule.cardQuot_apply] at hN

@@ -1,4 +1,4 @@
-import ClassNumber389
+import UnitSquareclasses389
 #print axioms CertifiedSelmer.Mathlib389.divisionCubic_monic
 #print axioms CertifiedSelmer.Mathlib389.divisionCubic_no_rat_root
 #print axioms CertifiedSelmer.Mathlib389.affine_not_two_torsion
@@ -59,3 +59,41 @@ import ClassNumber389
 #print axioms CertifiedSelmer.Mathlib389.CubicField.no_ideal_of_norm_seven
 #print axioms CertifiedSelmer.Mathlib389.CubicField.integers_principal
 #print axioms CertifiedSelmer.Mathlib389.CubicField.class_number
+#print axioms CertifiedSelmer.Mathlib389.CubicField.exists_real_embedding_beta_between_two_three
+#print axioms CertifiedSelmer.Mathlib389.CubicField.primeQuotientEquiv
+#print axioms CertifiedSelmer.Mathlib389.CubicField.unit_rank
+#print axioms CertifiedSelmer.Mathlib389.CubicField.unit_rank_mod_torsion
+#print axioms CertifiedSelmer.Mathlib389.CubicField.unitNorm
+#print axioms CertifiedSelmer.Mathlib389.CubicField.unitNorm_neg_one
+#print axioms CertifiedSelmer.Mathlib389.CubicField.unitSquareclassEquiv
+#print axioms CertifiedSelmer.Mathlib389.CubicField.squareclassNorm
+#print axioms CertifiedSelmer.Mathlib389.CubicField.squareclassNorm_eq_fst
+#print axioms CertifiedSelmer.Mathlib389.CubicField.normSquareKernelEquiv
+#print axioms CertifiedSelmer.Mathlib389.CubicField.norm_square_kernel_finrank
+#print axioms CertifiedSelmer.Mathlib389.CubicField.norm_square_kernel_card
+#print axioms CertifiedSelmer.Mathlib389.CubicField.unitNorm_isSquare_iff
+#print axioms CertifiedSelmer.Mathlib389.CubicField.descentUnitP
+#print axioms CertifiedSelmer.Mathlib389.CubicField.descentUnitQ
+#print axioms CertifiedSelmer.Mathlib389.CubicField.norm_descentUnitP
+#print axioms CertifiedSelmer.Mathlib389.CubicField.norm_descentUnitQ
+#print axioms CertifiedSelmer.Mathlib389.CubicField.descentUnitP_normalizes
+#print axioms CertifiedSelmer.Mathlib389.CubicField.descentUnitQ_normalizes
+#print axioms CertifiedSelmer.Mathlib389.CubicField.descentUnitP_nonsquare
+#print axioms CertifiedSelmer.Mathlib389.CubicField.descentUnitQ_nonsquare
+#print axioms CertifiedSelmer.Mathlib389.CubicField.descentUnitProduct_nonsquare
+#print axioms CertifiedSelmer.Mathlib389.CubicField.classP_ne_one
+#print axioms CertifiedSelmer.Mathlib389.CubicField.classQ_ne_one
+#print axioms CertifiedSelmer.Mathlib389.CubicField.classP_mul_classQ_ne_one
+#print axioms CertifiedSelmer.Mathlib389.CubicField.explicitNormSquareClasses
+#print axioms CertifiedSelmer.Mathlib389.CubicField.exists_unit_of_square_fractional_ideal
+#print axioms CertifiedSelmer.Mathlib389.CubicField.exists_unit_of_even_valuations
+#print axioms CertifiedSelmer.Mathlib389.CubicField.unitSquares
+#print axioms CertifiedSelmer.Mathlib389.CubicField.coe_unitNorm
+#print axioms CertifiedSelmer.Mathlib389.CubicField.squareclassNorm_mk
+#print axioms CertifiedSelmer.Mathlib389.CubicField.coe_descentUnitP
+#print axioms CertifiedSelmer.Mathlib389.CubicField.coe_descentUnitQ
+#print axioms CertifiedSelmer.Mathlib389.CubicField.classP
+#print axioms CertifiedSelmer.Mathlib389.CubicField.classQ
+#print axioms CertifiedSelmer.Mathlib389.CubicField.unit_squareclass_eq_one_iff
+#print axioms CertifiedSelmer.Mathlib389.CubicField.exists_norm_one_unit_of_even_valuations
+#print axioms CertifiedSelmer.Mathlib389.CubicField.four_descent_representatives
