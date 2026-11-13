@@ -93,14 +93,32 @@ lake exe cache get \
   Mathlib.Tactic.NormNum.Prime Mathlib.Tactic.Ring Mathlib.Tactic.Linarith \
   Mathlib.Tactic.LinearCombination Mathlib.Tactic.FinCases Mathlib.Tactic.IntervalCases \
   Mathlib.NumberTheory.NumberField.ClassNumber Mathlib.NumberTheory.NumberField.Norm \
-  Mathlib.Tactic.FunProp
+  Mathlib.Tactic.FunProp \
+  Mathlib.NumberTheory.NumberField.Units.DirichletTheorem \
+  Mathlib.Algebra.Module.ZMod \
+  Mathlib.RingTheory.DedekindDomain.Factorization
 python3 replay.py
 ```
 
 The replay emits proof modules, runs the regression examples, and records
 transitive axiom reports and source hashes in `audit/mathlib389/`.
 
-Remaining obligations include the full unit argument,
-local-field squareclass and local-image theorems, and the Kummer and
-Selmer objects and exactness needed
-for the rank and 2-primary Tate–Shafarevich conclusions.
+The unit-squareclass module uses Mathlib's Dirichlet basis for the quotient
+by torsion. The field signature gives two integral coordinates, and a real
+embedding identifies the torsion units as signs. Reduction of the two
+coordinates modulo two, together with the norm sign, identifies the unit
+squareclass group with `ℤˣ × Multiplicative (Fin 2 → ZMod 2)`. The norm-square
+kernel has dimension two and exactly four classes, represented by
+`1`, `descentUnitP`, `descentUnitQ`, and their product. The two units and
+their square normalizations reuse the finite arithmetic witnesses.
+Their independence uses the existing modulo-eight obstruction, reduction
+at the norm-three ideal, and the sign of the product at a real embedding.
+
+The fractional ideal bridge converts even valuations at all finite primes
+into a unit representative using the principal-ideal theorem.
+`four_descent_representatives` combines this step with the norm-square
+condition to give an explicit square normalization to one of the four
+representatives for every eligible field element. The local-field squareclass and local Kummer image theorems still have to
+supply those hypotheses for Selmer classes. The Kummer and Selmer objects
+and exactness needed for the rank and 2-primary Tate–Shafarevich conclusions
+remain open in Lean.
