@@ -1,11 +1,27 @@
 {
   "Sha_theorem_formalized": false,
   "actual_rational_curve_two_primary_torsion_formalized": true,
+  "cubic_class_number_one_formalized": true,
   "cubic_field_discriminant_formalized": true,
   "cubic_number_field_bridge_formalized": true,
   "cubic_power_order_maximal_formalized": true,
   "declarations": {
+    "CertifiedSelmer.Mathlib389.CubicField.absNorm_betaInteger_sub_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.CubicField.absNorm_betaInteger_sub_two": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "CertifiedSelmer.Mathlib389.CubicField.basis_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.CubicField.betaInteger": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -21,6 +37,11 @@
       "propext"
     ],
     "CertifiedSelmer.Mathlib389.CubicField.beta_quartic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.CubicField.class_number": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -95,6 +116,11 @@
       "Quot.sound",
       "propext"
     ],
+    "CertifiedSelmer.Mathlib389.CubicField.field_signature": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "CertifiedSelmer.Mathlib389.CubicField.finrank_K": [
       "Classical.choice",
       "Quot.sound",
@@ -106,6 +132,11 @@
       "propext"
     ],
     "CertifiedSelmer.Mathlib389.CubicField.g_irreducible": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.CubicField.integers_principal": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -125,12 +156,37 @@
       "Quot.sound",
       "propext"
     ],
+    "CertifiedSelmer.Mathlib389.CubicField.minkowski_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.CubicField.minkowski_floor": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "CertifiedSelmer.Mathlib389.CubicField.mul_389_mem_order": [
       "Classical.choice",
       "Quot.sound",
       "propext"
     ],
+    "CertifiedSelmer.Mathlib389.CubicField.no_ideal_of_norm_five": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.CubicField.no_ideal_of_norm_seven": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "CertifiedSelmer.Mathlib389.CubicField.norm_X_sub_theta": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.CubicField.norm_betaInteger_sub": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -161,6 +217,16 @@
       "propext"
     ],
     "CertifiedSelmer.Mathlib389.CubicField.powerBasis_discriminant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.CubicField.prime_of_norm_three": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CertifiedSelmer.Mathlib389.CubicField.prime_over_two": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -247,14 +313,16 @@
   "rank_theorem_formalized": false,
   "source_sha256": {
     "../lean/CertifiedSelmer/FullDescent389.lean": "22167708af1e5825aeb760a6eb6f6ebd560ce3b38bc74d1f07abacee066c155e",
-    "Audit.lean": "e8a3626fabcf407cc40a6954b4fe532c406c95dde8c0385341b40decba7ab37e",
+    "Audit.lean": "81ad6a31a479ba402f48a6c0257ae92c37b4f22bb90b6faec785f758ed122f91",
+    "ClassNumber389.lean": "5c9d729e6f1b84111b7f324454f38341a62cd48cdb1fad1039e04e1eb6d83847",
+    "ClassNumber389Tests.lean": "aa050c03d9aae9b97cbc3d898ed1891fc91d07cfb1dfdcb0c236058adbfae108",
     "CubicField389.lean": "1b23d04ea92fadd583b99e7d90a448cf85448f8a67921eaad802da0ffcad8739",
     "CubicField389Tests.lean": "fdd4c1f1a47c8dcc1a5777618ff9fb2720adf32226f6a6fc82eccca53c515f32",
     "Curve389.lean": "dddb0896d158bea9104301a4ea9220fc046ebcd3f1594bd2baee8ae2f664f4f4",
     "lake-manifest.json": "b96dfc8ccb7d86115b9b549369a4b0a9c2bf5d08f4141b444a4b3fd171996441",
-    "lakefile.toml": "af1b156c6aac4d27482bcfb0903f53971a590cf086bd49a508ef41d039bf0bdb",
+    "lakefile.toml": "b40ae02ab6184ae33be72caa060911b4aff1e8f1fa04fdd916bb49f9988a6ba3",
     "lean-toolchain": "b1a88ff98b9eb4f96aaf762f9d1ef0e692c9e52a80c51bbb58f3686a6f01571f",
-    "replay.py": "966bbd0f939aad99fb80ad94668a3a5b0b4933b188cb76de13dac1e60ed767ea"
+    "replay.py": "1887b1e968c6bafb29b6da432da5480cbdbe98c870f4fcea5b71fb58b522297b"
   },
   "status": "kernel_replay_passed"
 }

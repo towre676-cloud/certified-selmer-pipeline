@@ -20,7 +20,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install pinned arithmetic checker dependencies
-        run: python3 -m pip install -r arithmetic/requirements.txt
+        run: |
+          python3 -m pip install -r arithmetic/requirements.txt
+          python3 -m pip install "git+https://github.com/towre676-cloud/PerfectJet.git@ad2083d3e3f6b518aeff624b099fcbbee309350e"
       - name: Test rejection of unsupported arithmetic and malformed evidence
         run: python3 -m unittest discover -s tests -v
       - name: Verify existing digest without rewriting receipts
