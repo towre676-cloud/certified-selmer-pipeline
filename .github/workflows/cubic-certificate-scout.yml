@@ -1,0 +1,38 @@
+name: Cubic certificate discovery
+on:
+  pull_request:
+    paths:
+      - 'arithmetic/cubic_certificate_scout.py'
+      - 'arithmetic/PERFECTJET_PIN.txt'
+      - 'tests/test_cubic_certificate_scout.py'
+      - 'docs/CUBIC_CERTIFICATE_SCOUT.md'
+      - '.github/workflows/cubic-certificate-scout.yml'
+  push:
+    paths:
+      - 'arithmetic/cubic_certificate_scout.py'
+      - 'arithmetic/PERFECTJET_PIN.txt'
+      - 'tests/test_cubic_certificate_scout.py'
+      - 'docs/CUBIC_CERTIFICATE_SCOUT.md'
+      - '.github/workflows/cubic-certificate-scout.yml'
+  workflow_dispatch:
+jobs:
+  exact-cubics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned PerfectJet
+        run: |
+          PIN="$(cat arithmetic/PERFECTJET_PIN.txt)"
+          python -m pip install "git+https://github.com/towre676-cloud/PerfectJet.git@${PIN}"
+      - name: Test five cubic maximal-order patterns
+        run: python -m unittest discover -s tests -p 'test_cubic_certificate_scout.py' -v
+      - name: Emit exact receipt
+        run: python arithmetic/cubic_certificate_scout.py > /tmp/cubic-certificate-scout.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cubic-maximal-order-certificates
+          path: /tmp/cubic-certificate-scout.json

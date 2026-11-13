@@ -7,12 +7,17 @@ ROOT = Path(__file__).resolve().parents[1]
 ARITH = ROOT / "arithmetic"
 sys.path.insert(0, str(ARITH))
 
-spec = importlib.util.spec_from_file_location(
-    "perfectjet_cubic_bridge", ARITH/"perfectjet_bridge.py")
-B = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(B)
+PERFECTJET_AVAILABLE = importlib.util.find_spec("perfectjet") is not None
+if PERFECTJET_AVAILABLE:
+    spec = importlib.util.spec_from_file_location(
+        "perfectjet_cubic_bridge", ARITH/"perfectjet_bridge.py")
+    B = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(B)
+else:
+    B = None
 
 
+@unittest.skipUnless(PERFECTJET_AVAILABLE, "PerfectJet is exercised by the dedicated pinned bridge workflow")
 class PerfectJetCubicBridgeTests(unittest.TestCase):
     def test_finite_arithmetic_sweep(self):
         report = B.deterministic_arithmetic_sweep()
